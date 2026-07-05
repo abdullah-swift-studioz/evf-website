@@ -1,0 +1,781 @@
+/* Logo styling - reduce padding and make bigger */
+.logo-container {
+    padding: 0.25rem !important; /* Reduce padding from default */
+}
+
+.logo-container img {
+    height: 6rem !important; /* Make logo bigger - 96px instead of 80px */
+    width: auto !important;
+    object-fit: contain !important;
+}
+
+/* Override Tailwind classes for logo */
+nav .flex-shrink-0 img {
+    height: 6rem !important;
+    width: auto !important;
+    padding: 0.25rem !important;
+}
+
+
+/* Custom styles for VisaConsult website */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Hero section video and overlay styles */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+/* Why Choose Us section - Desktop Grid */
+.why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 767px) {
+    .why-choose-grid {
+        display: none;
+    }
+}
+
+/* Why Choose Us section - Mobile Swiper */
+.swiper-container {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .swiper-container {
+        display: block;
+    }
+}
+
+/* Enhanced card styling for Why Choose Us section */
+.why-choose-card {
+    background-color: #fcfcfc; /* bg-gray-25 - almost white */
+    border: 1px solid #e5e7eb; /* light gray border */
+    border-radius: 1rem; /* rounded corners */
+    padding: 2rem; /* generous internal padding */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm - most subtle */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.why-choose-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Mobile slider touch handling */
+.swiper-container {
+    touch-action: pan-y pinch-zoom;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Pagination dots for Why Choose Us section */
+.swiper-container .swiper-pagination {
+    position: relative;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-container .swiper-pagination .swiper-pagination-bullet {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #d1d5db;
+    opacity: 1;
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+}
+
+.swiper-container .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: #0F218B;
+    transform: scale(1.2);
+}
+
+.swiper-wrapper {
+    touch-action: pan-y pinch-zoom;
+}
+
+.swiper-slide {
+    touch-action: pan-y pinch-zoom;
+    width: 100%;
+    height: auto;
+}
+
+/* Prevent vertical scrolling when swiping horizontally on mobile */
+@media (max-width: 767px) {
+    .swiper-container {
+        touch-action: pan-x pan-y;
+    }
+    
+    .swiper-wrapper {
+        touch-action: pan-x pan-y;
+    }
+    
+    .swiper-slide {
+        touch-action: pan-x pan-y;
+    }
+}
+
+/* Smooth transitions for interactive elements */
+.interactive-element {
+    transition: all 0.3s ease;
+}
+
+.interactive-element:hover {
+    transform: scale(1.05);
+}
+
+/* Custom button styles */
+.btn-primary {
+    background-color: #F97316;
+    color: white;
+    font-weight: bold;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #ea580c;
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+    border: 2px solid #006A4E;
+    color: #006A4E;
+    background-color: transparent;
+    font-weight: bold;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #f0fdf4;
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Styles */
+footer {
+    background-color: #f9fafb; /* bg-gray-50 */
+}
+
+/* Footer Contact Icons */
+.footer-icon {
+    transition: all 0.3s ease;
+}
+
+.footer-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Footer Links */
+.footer-link {
+    transition: all 0.2s ease;
+}
+
+.footer-link:hover {
+    color: #006A4E !important;
+    transform: translateX(2px);
+}
+
+/* Footer Column Headers */
+.footer-column-header {
+    position: relative;
+}
+
+.footer-column-header::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: #0F218B;
+}
+
+/* Floating WhatsApp Button */
+.whatsapp-fab {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.whatsapp-fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Responsive Footer Adjustments */
+@media (max-width: 768px) {
+    .footer-contact-grid {
+        gap: 2rem;
+    }
+    
+    .footer-sitemap-grid {
+        gap: 2rem;
+    }
+    
+    .footer-column-header {
+        font-size: 1rem;
+    }
+}
+
+/* Footer Link Icons */
+.footer-link-icon {
+    transition: transform 0.2s ease;
+}
+
+.footer-link:hover .footer-link-icon {
+    transform: translateX(2px);
+}
+
+/* Enhanced Footer Styling */
+footer .footer-contact-info {
+    background: linear-gradient(135deg, rgba(0, 106, 78, 0.05) 0%, rgba(15, 33, 139, 0.05) 100%);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+footer .footer-separator {
+    border: none;
+}
+
+/* Timeline Node Animation */
+.timeline-node {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-node:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px -5px rgba(15, 33, 139, 0.2);
+}
+
+/* Step Card Enhanced Styling */
+.step-card {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: #0F218B;
+}
+
+.step-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0F218B, #006A4E);
+    border-radius: 0.75rem 0.75rem 0 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.step-card:hover::before {
+    opacity: 1;
+}
+
+/* Timeline Line Enhancement */
+.timeline-line {
+    background: linear-gradient(90deg, transparent 0%, #0F218B 20%, #0F218B 80%, transparent 100%);
+    opacity: 0.3;
+}
+
+.timeline-line-mobile {
+    background: linear-gradient(180deg, transparent 0%, #0F218B 20%, #0F218B 80%, transparent 100%);
+    opacity: 0.3;
+}
+
+/* Step Number Badge */
+.step-number {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #0F218B, #006A4E);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Mobile Timeline */
+@media (max-width: 1023px) {
+    .timeline-mobile-container {
+        position: relative;
+        padding-left: 2rem;
+    }
+    
+    .timeline-mobile-line {
+        position: absolute;
+        left: 1rem;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(180deg, transparent 0%, #0F218B 20%, #0F218B 80%, transparent 100%);
+        opacity: 0.3;
+    }
+}
+
+/* Step Card Content Animation */
+.step-card h3 {
+    transition: color 0.3s ease;
+}
+
+.step-card:hover h3 {
+    color: #006A4E !important;
+}
+
+.step-card p {
+    transition: color 0.3s ease;
+}
+
+.step-card:hover p {
+    color: #4a5568 !important;
+}
+
+/* Icon Animation */
+.step-icon {
+    transition: all 0.3s ease;
+}
+
+.step-card:hover .step-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+    .step-card {
+        margin-left: 1rem;
+    }
+    
+    .timeline-node {
+        left: -1rem;
+    }
+}
+
+/* Meet Our Team Section Styles */
+.team-swiper-container {
+    position: relative;
+    padding: 0 60px;
+}
+
+.team-swiper {
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+/* Team Member Card */
+.team-member-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+.team-member-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Team Member Image */
+.team-member-image-container {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.team-member-image {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #f3f4f6;
+    transition: all 0.3s ease;
+}
+
+.team-member-card:hover .team-member-image {
+    border-color: #0F218B;
+    transform: scale(1.05);
+}
+
+/* Team Member Info */
+.team-member-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.team-member-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #0F218B;
+    transition: color 0.3s ease;
+}
+
+.team-member-card:hover .team-member-name {
+    color: #1e40af;
+}
+
+.team-member-title {
+    font-size: 1rem;
+    color: #696969;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+/* Social Media Links */
+.team-member-social {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #f3f4f6;
+    color: #696969;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.social-link:hover {
+    background-color: #0F218B;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 33, 139, 0.3);
+}
+
+/* Swiper Navigation Buttons */
+.team-swiper-button-prev,
+.team-swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: #0F218B;
+    font-size: 1rem;
+}
+
+.team-swiper-button-prev {
+    left: 0;
+}
+
+.team-swiper-button-next {
+    right: 0;
+}
+
+.team-swiper-button-prev:hover,
+.team-swiper-button-next:hover {
+    background-color: #0F218B;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(15, 33, 139, 0.3);
+}
+
+.team-swiper-button-prev:active,
+.team-swiper-button-next:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Swiper Pagination */
+.team-swiper-pagination {
+    position: relative;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-swiper-pagination .swiper-pagination-bullet {
+    width: 0.75rem;
+    height: 0.75rem;
+    background-color: #d1d5db;
+    opacity: 1;
+    margin: 0 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.team-swiper-pagination .swiper-pagination-bullet-active {
+    background-color: #0F218B;
+    transform: scale(1.2);
+}
+
+/* Responsive Design for Team Section */
+@media (max-width: 1024px) {
+    .team-swiper-container {
+        padding: 0 50px;
+    }
+    
+    .team-member-card {
+        min-height: 380px;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-swiper-container {
+        padding: 0 40px;
+    }
+    
+    .team-member-card {
+        min-height: 360px;
+        padding: 1.5rem;
+    }
+    
+    .team-member-image {
+        width: 7rem;
+        height: 7rem;
+    }
+    
+    .team-member-name {
+        font-size: 1.125rem;
+    }
+    
+    .team-member-title {
+        font-size: 0.875rem;
+    }
+    
+    .team-swiper-button-prev,
+    .team-swiper-button-next {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .team-swiper-container {
+        padding: 0 30px;
+    }
+    
+    .team-member-card {
+        min-height: 340px;
+        padding: 1.25rem;
+    }
+    
+    .team-member-image {
+        width: 6rem;
+        height: 6rem;
+    }
+    
+    .team-member-social {
+        gap: 0.75rem;
+    }
+    
+    .social-link {
+        width: 2rem;
+        height: 2rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Swiper Slide Responsive Settings */
+@media (min-width: 1024px) {
+    .team-swiper .swiper-slide {
+        width: calc(33.333% - 1rem);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .team-swiper .swiper-slide {
+        width: calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 767px) {
+    .team-swiper .swiper-slide {
+        width: 100%;
+    }
+}
+
+/* Accordion Styles for About Page */
+
+.accordion-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+    border-color: #006A4E;
+    box-shadow: 0 2px 8px rgba(0, 106, 78, 0.1);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #f9fafb;
+}
+
+.accordion-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+    transition: color 0.3s ease;
+}
+
+.accordion-header:hover .accordion-title {
+    color: #006A4E;
+}
+
+.accordion-icon {
+    font-size: 0.875rem;
+    color: #6b7280;
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover .accordion-icon {
+    color: #006A4E;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(180deg);
+    color: #006A4E;
+}
+
+.accordion-item.active .accordion-title {
+    color: #006A4E;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 !important;
+    margin: 0;
+    transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease;
+    background-color: #f9fafb;
+    opacity: 0;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 1000px;
+    padding: 0 1.5rem 1.5rem 1.5rem !important;
+    opacity: 1;
+}
+
+/* Experience Badge Animation */
+.experience-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/*
+.w-16 h-1 rounded-full mx-auto mb-8 {
+    display: none;
+}
+*/
+
+
+.href-link{
+    color:  rgb(88, 177, 255);
+}
+.ha{
+    color:  rgb(88, 177, 255);
+}

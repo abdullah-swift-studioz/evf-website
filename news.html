@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Insights - Express Visa Facilitation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex-shrink-0 logo-container">
+                <a href="index.html" class="block hover:opacity-80 transition-opacity duration-200" title="Go to Homepage">
+                    <img src="images/logo.jpeg" alt="Express Visa Facilitation Logo" class="h-20 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; color: #0F218B; font-size: 1.5rem; font-weight: bold;">Express Visa Facilitation</div>
+                </a>
+            </div>
+            
+                    <!-- Navigation Links -->
+            <div class="hidden md:block">
+                <ul class="flex space-x-8 items-center">
+                    <!-- Our Company Dropdown -->
+                    <li class="relative group">
+                        <a href="#" class="transition-colors duration-200 font-medium flex items-center hover:opacity-80" style="color: #696969;">
+                            About Us
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">About Us</a>
+                                <a href="company.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Company</a>
+                                <a href="management-team.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Management Team</a>
+                                <a href="message-from-ceo.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Message from CEO</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Our Services Dropdown -->
+                    <li class="relative group">
+                        <a href="#" class="transition-colors duration-200 font-medium flex items-center hover:opacity-80" style="color: #696969;">
+                            Our Services
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                
+                                <a href="work-and-business-visa.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Work & Business Visas</a>
+                                <a href="tourist-and-visit-visas.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Tourist & Visit Visas</a>
+                                <a href="family-and-spousal-visa.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Family & Spousal Visas</a>
+                                <a href="immigration-and-residency.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Immigration & Residency</a>
+                                <a href="document-verification.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Document Verification</a>
+                                <a href="citizenship-immigration.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Citizenship and Immigration</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="citizenship-immigration.html" class="transition-colors duration-200 font-medium hover:opacity-80" style="color: #696969;">
+                            Citizenship and Immigration
+                        </a>
+                    </li>
+                    <!-- Top Destinations Dropdown -->
+                    <li class="relative group">
+                        <a href="#" class="transition-colors duration-200 font-medium flex items-center hover:opacity-80" style="color: #696969;">
+                            Top Destinations
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-52 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 max-h-96 overflow-y-auto"><div class="py-2">
+                                <a href="uk-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">UK Visa</a>
+                                <a href="us-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">US Visa</a>
+                                <a href="canada-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Canada Visa</a>
+                                <a href="schengen-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Schengen Visa</a>
+                                <a href="australia-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Australia Visa</a>
+                                <a href="japan-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Japan Visa</a>
+                                <a href="china-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">China Visa</a>
+                                <a href="uae-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">UAE Visa</a>
+                                <a href="ksa-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">KSA Visa</a>
+                                <a href="turkey-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Turkey Visa</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="transition-colors duration-200 font-medium hover:opacity-80" style="color: #696969;">
+                            Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button type="button" class="focus:outline-none" id="mobile-menu-button" style="color: #696969;">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    About Us
+                </a>
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Our Services
+                </a>
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Citizenship and Immigration
+                </a>
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Top Destinations
+                </a>
+                <a href="contact.html" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero Banner -->
+    <section class="relative h-[40vh] w-full overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+             style="background-image: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80');">
+        </div>
+        
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        
+        <!-- Main Content -->
+        <div class="relative h-full flex flex-col justify-center items-center px-6 z-10">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center leading-tight mb-6 max-w-4xl">
+                Latest News & Insights
+            </h1>
+            <p class="text-xl md:text-2xl text-white text-center max-w-3xl">
+                Stay updated with the latest in visa policies, immigration news, and expert advice from our team.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 2: Featured Post -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: #0F218B;">
+                    Featured Post
+                </h2>
+            </div>
+            
+            <!-- Featured Article Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column - Featured Image -->
+                <div>
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Canada visa policy update" 
+                         class="w-full h-96 object-cover rounded-xl shadow-md transition-transform duration-300 hover:scale-105">
+                </div>
+                
+                <!-- Right Column - Article Content -->
+                <div class="space-y-6">
+                    <!-- Category Tag -->
+                    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-green-50 text-green-800">
+                        Immigration Policy
+                    </span>
+                    
+                    <!-- Article Title -->
+                    <h3 class="text-3xl font-bold" style="color: #374151;">
+                        Canada Announces New Streamlined Process for Student Visas
+                    </h3>
+                    
+                    <!-- Article Excerpt -->
+                    <p class="text-lg leading-relaxed" style="color: #696969;">
+                        The Canadian government has introduced significant changes to the student visa application process, designed to reduce processing times by up to 50%. These changes include a new online portal, simplified documentation requirements, and prioritized processing for certain educational institutions.
+                    </p>
+                    
+                    <!-- Author & Date -->
+                    <div class="flex items-center space-x-2" style="color: #6B7280;">
+                        <div class="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
+                            <img src="images/team/asad.png" alt="Mr. Asad" class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-sm">By Mr. Asad • September 22, 2025</span>
+                    </div>
+                    
+                    <!-- Read More Button -->
+                    <div>
+                        <button class="border-2 font-bold py-3 px-8 rounded-full transition-all duration-200 flex items-center gap-2 hover:bg-blue-50 hover:scale-105" style="border-color: #0F218B; color: #0F218B;">
+                            READ FULL ARTICLE
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: All Articles Grid -->
+    <section class="py-24 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold uppercase mb-4" style="color: #006A4E;">
+                    All Articles
+                </h2>
+                <div class="w-16 h-1 rounded-full mx-auto" style="background-color: #006A4E;"></div>
+            </div>
+            
+            <!-- Articles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Article Card 1 -->
+                <a href="#" class="block bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <div class="overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1521341957697-b75801b8e15a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="UK Visa Update" 
+                             class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-blue-50 text-blue-800">
+                            UK Immigration
+                        </span>
+                        <h4 class="text-xl font-bold mb-3" style="color: #374151;">
+                            UK Introduces New Points-Based Immigration System
+                        </h4>
+                        <p class="text-base mb-4" style="color: #696969;">
+                            The United Kingdom has launched its new points-based immigration system, impacting all visa categories and prioritizing skilled workers.
+                        </p>
+                        <p class="text-sm font-medium" style="color: #0F218B;">
+                            Read More →
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Article Card 2 -->
+                <a href="#" class="block bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <div class="overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                             alt="Student Visa Tips" 
+                             class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-yellow-50 text-yellow-800">
+                            Student Visas
+                        </span>
+                        <h4 class="text-xl font-bold mb-3" style="color: #374151;">
+                            5 Key Tips for a Successful Student Visa Interview
+                        </h4>
+                        <p class="text-base mb-4" style="color: #696969;">
+                            Preparing for your student visa interview? Our experts share five essential tips to help you confidently navigate the process.
+                        </p>
+                        <p class="text-sm font-medium" style="color: #0F218B;">
+                            Read More →
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Article Card 3 -->
+                <a href="#" class="block bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <div class="overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1568203856246-5ee05f36c6a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" 
+                             alt="Digital Nomad Visas" 
+                             class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-purple-50 text-purple-800">
+                            Remote Work
+                        </span>
+                        <h4 class="text-xl font-bold mb-3" style="color: #374151;">
+                            The Rise of Digital Nomad Visas: Top 10 Destinations
+                        </h4>
+                        <p class="text-base mb-4" style="color: #696969;">
+                            More countries are introducing special visa programs for remote workers. Discover the best destinations for digital nomads in 2025.
+                        </p>
+                        <p class="text-sm font-medium" style="color: #0F218B;">
+                            Read More →
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Article Card 4 -->
+                <a href="#" class="block bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <div class="overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Business Visa Updates" 
+                             class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-red-50 text-red-800">
+                            Business Travel
+                        </span>
+                        <h4 class="text-xl font-bold mb-3" style="color: #374151;">
+                            Business Visa Updates for EU Travel Post-Brexit
+                        </h4>
+                        <p class="text-base mb-4" style="color: #696969;">
+                            Important changes to business travel regulations between the UK and EU countries have come into effect. Learn what business travelers need to know.
+                        </p>
+                        <p class="text-sm font-medium" style="color: #0F218B;">
+                            Read More →
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Article Card 5 -->
+                <a href="#" class="block bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <div class="overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1504607798333-52a30db54a5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Australia Immigration" 
+                             class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-green-50 text-green-800">
+                            Skilled Migration
+                        </span>
+                        <h4 class="text-xl font-bold mb-3" style="color: #374151;">
+                            Australia Expands Skilled Migration Program for 2025-26
+                        </h4>
+                        <p class="text-base mb-4" style="color: #696969;">
+                            Australia has announced a significant expansion of its skilled migration program, with new opportunities in healthcare, technology, and engineering sectors.
+                        </p>
+                        <p class="text-sm font-medium" style="color: #0F218B;">
+                            Read More →
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Article Card 6 -->
+                <a href="#" class="block bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <div class="overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Family Reunification" 
+                             class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <span class="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 bg-indigo-50 text-indigo-800">
+                            Family Visas
+                        </span>
+                        <h4 class="text-xl font-bold mb-3" style="color: #374151;">
+                            Updated Requirements for Family Reunification Visas
+                        </h4>
+                        <p class="text-base mb-4" style="color: #696969;">
+                            Recent changes to family reunification visa policies across major destinations have created new pathways for families looking to reunite internationally.
+                        </p>
+                        <p class="text-sm font-medium" style="color: #0F218B;">
+                            Read More →
+                        </p>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="flex justify-center items-center space-x-2">
+                <a href="#" class="px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+                    Previous
+                </a>
+                <a href="#" class="px-4 py-2 rounded-md text-white font-medium transition-colors duration-200" style="background-color: #0F218B;">
+                    1
+                </a>
+                <a href="#" class="px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+                    2
+                </a>
+                <a href="#" class="px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+                    3
+                </a>
+                <a href="#" class="px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200">
+                    Next
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+
+    <footer class="bg-gray-50 py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Horizontal Separator -->
+            <hr class="footer-separator">
+            
+            <!-- Bottom Sitemap Links Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 footer-sitemap-grid">
+                <!-- Column 1 - About Us -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        About Us
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="about.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                About The Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="company.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="management-team.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Management Team
+                            </a>
+                        </li>
+                        <li>
+                            <a href="message-from-ceo.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Message from CEO
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 - Top Destinations -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        Top Destinations
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><a href="uk-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>UK Visa</a></li>
+                        <li><a href="us-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>USA Visa</a></li>
+                        <li><a href="canada-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Canada Visa</a></li>
+                        <li><a href="schengen-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Schengen Visa</a></li>
+                        <li><a href="australia-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Australia Visa</a></li>
+                        <li><a href="japan-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Japan Visa</a></li>
+                        <li><a href="china-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>China Visa</a></li>
+                        <li><a href="uae-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>UAE Visa</a></li>
+                        <li><a href="ksa-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>KSA Visa</a></li>
+                        <li><a href="turkey-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Turkey Visa</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 - Quick Menu -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        Quick Menu
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="contact.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Contact Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="disclaimer.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Disclaimer
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 - Our Services -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        Our Services
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="work-and-business-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Work & Business Visas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tourist-and-visit-visas.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Tourist & Visit Visas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="family-and-spousal-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Family & Spousal Visas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="immigration-and-residency.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Immigration & Residency
+                            </a>
+                        </li>
+                        <li>
+                            <a href="document-verification.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Document Verification
+                            </a>
+                        </li>
+                        <li>
+                            <a href="citizenship-immigration.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Citizenship and Immigration
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/923208889091" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-4 right-4 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 z-50 group whatsapp-fab">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+                 <!-- FAQ Item 3 -->
+
+    </a>
+
+    <!-- External JavaScript -->
+    <script src="script.js" defer></script>
+</body>
+</html>

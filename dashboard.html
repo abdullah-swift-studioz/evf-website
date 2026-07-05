@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVF Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.jpeg">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Firebase SDKs (compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-7xl mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-6" style="color:#0F218B;">EVF Submissions Dashboard</h1>
+
+        <!-- Login Card -->
+        <div id="loginCard" class="bg-white rounded-xl shadow p-6 max-w-md">
+            <h2 class="text-lg font-semibold mb-4" style="color:#006A4E;">Admin Login</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm mb-1 text-gray-500">Username</label>
+                    <input id="adminUser" type="text" class="w-full border rounded px-3 py-2" placeholder="admin@example.com">
+                </div>
+                <div>
+                    <label class="block text-sm mb-1 text-gray-500">Password</label>
+                    <input id="adminPass" type="password" class="w-full border rounded px-3 py-2" placeholder="********">
+                </div>
+                <button id="loginBtn" class="w-full border-2 font-bold py-2 rounded" style="border-color:#006A4E;color:#006A4E;">Login</button>
+                <p id="loginError" class="text-red-600 text-sm hidden">Invalid credentials.</p>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="dashContent" class="hidden">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex gap-2">
+                    <input id="searchEmail" type="text" class="border rounded px-3 py-2" placeholder="Filter by email">
+                    <select id="filterService" class="border rounded px-3 py-2">
+                        <option value="">All services</option>
+                        <option value="student-visa">Student Visa</option>
+                        <option value="work-visa">Work Visa</option>
+                        <option value="visit-visa">Visit Visa</option>
+                        <option value="immigration">Immigration</option>
+                        <option value="citizenship">Citizenship and Immigration</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <button id="exportCsv" class="border px-4 rounded" style="border-color:#0F218B;color:#0F218B;">Export CSV</button>
+                </div>
+                <button id="logoutBtn" class="border px-4 rounded" style="border-color:#ef4444;color:#ef4444;">Logout</button>
+            </div>
+
+            <div class="bg-white rounded-xl shadow overflow-x-auto">
+                <table class="min-w-full text-sm">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="text-left p-3">Created</th>
+                            <th class="text-left p-3">Name</th>
+                            <th class="text-left p-3">Email</th>
+                            <th class="text-left p-3">Phone</th>
+                            <th class="text-left p-3">Service</th>
+                            <th class="text-left p-3">Message</th>
+                            <th class="text-left p-3">Page</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rows"></tbody>
+                </table>
+            </div>
+
+            <div class="flex justify-between items-center mt-4">
+                <button id="prevPage" class="border px-3 py-1 rounded disabled:opacity-50" style="border-color:#006A4E;color:#006A4E;">Prev</button>
+                <span id="pageInfo" class="text-gray-600 text-sm"></span>
+                <button id="nextPage" class="border px-3 py-1 rounded disabled:opacity-50" style="border-color:#006A4E;color:#006A4E;">Next</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+// Hardcoded credentials (as requested)
+const ADMIN_USER = 'admin@evf';
+const ADMIN_PASS = 'evf@12345';
+
+// Firebase init (compat)
+const firebaseConfig = {
+  apiKey: "AIzaSyDi2KWdwFkQCbuCgj9Qx2KRp7J9ji5iBrY",
+  authDomain: "evf-backend.firebaseapp.com",
+  projectId: "evf-backend",
+  storageBucket: "evf-backend.firebasestorage.app",
+  messagingSenderId: "668853277727",
+  appId: "1:668853277727:web:b8c47760ba1f11f4fab12a",
+  measurementId: "G-KRR863MT1J"
+};
+firebase.initializeApp(firebaseConfig);
+try { firebase.analytics(); } catch (_) {}
+const db = firebase.firestore();
+
+// Simple session using sessionStorage
+function isAuthed() { return sessionStorage.getItem('evfAuthed') === '1'; }
+function setAuthed(v) { sessionStorage.setItem('evfAuthed', v ? '1' : '0'); }
+
+const loginCard = document.getElementById('loginCard');
+const dashContent = document.getElementById('dashContent');
+const loginBtn = document.getElementById('loginBtn');
+const logoutBtn = document.getElementById('logoutBtn');
+const loginError = document.getElementById('loginError');
+
+function updateView() {
+  if (isAuthed()) {
+    loginCard.classList.add('hidden');
+    dashContent.classList.remove('hidden');
+    loadPage();
+  } else {
+    dashContent.classList.add('hidden');
+    loginCard.classList.remove('hidden');
+  }
+}
+
+loginBtn.addEventListener('click', () => {
+  const u = document.getElementById('adminUser').value.trim();
+  const p = document.getElementById('adminPass').value;
+  if (u === ADMIN_USER && p === ADMIN_PASS) {
+    loginError.classList.add('hidden');
+    setAuthed(true);
+    updateView();
+  } else {
+    loginError.classList.remove('hidden');
+  }
+});
+
+logoutBtn.addEventListener('click', () => {
+  setAuthed(false);
+  updateView();
+});
+
+// Listing with basic pagination
+const rows = document.getElementById('rows');
+const prevBtn = document.getElementById('prevPage');
+const nextBtn = document.getElementById('nextPage');
+const pageInfo = document.getElementById('pageInfo');
+const searchEmail = document.getElementById('searchEmail');
+const filterService = document.getElementById('filterService');
+const exportCsv = document.getElementById('exportCsv');
+
+let pageStack = []; // keep cursors for prev
+let currentCursor = null;
+const PAGE_SIZE = 20;
+
+function formatDate(ts) {
+  if (!ts) return '';
+  const d = ts.toDate();
+  return d.toLocaleString();
+}
+
+function renderRows(docs) {
+  rows.innerHTML = '';
+  docs.forEach(doc => {
+    const v = doc.data();
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="p-3 whitespace-nowrap">${formatDate(v.createdAt)}</td>
+      <td class="p-3">${(v.firstName||'') + ' ' + (v.lastName||'')}</td>
+      <td class="p-3">${v.email||''}</td>
+      <td class="p-3">${v.phone||''}</td>
+      <td class="p-3">${v.service||''}</td>
+      <td class="p-3 max-w-xl whitespace-pre-wrap">${v.message||''}</td>
+      <td class="p-3">${v.page||''}</td>
+    `;
+    rows.appendChild(tr);
+  });
+}
+
+async function queryBase(startAfterDoc=null) {
+  let q = db.collection('submissions').orderBy('createdAt', 'desc');
+  const email = searchEmail.value.trim().toLowerCase();
+  const service = filterService.value;
+  // Simple client-side filter; Firestore composite queries avoided for simplicity
+  const snap = await q.limit(PAGE_SIZE + 1).get();
+  let docs = snap.docs;
+  if (email || service) {
+    docs = docs.filter(d => {
+      const v = d.data();
+      const matchEmail = email ? String(v.email||'').toLowerCase().includes(email) : true;
+      const matchService = service ? v.service === service : true;
+      return matchEmail && matchService;
+    });
+  }
+  // Handle next cursor (naive; because of client-side filter)
+  const hasMore = docs.length > PAGE_SIZE;
+  const pageDocs = docs.slice(0, PAGE_SIZE);
+  return { pageDocs, hasMore };
+}
+
+async function loadPage(next=false) {
+  rows.innerHTML = '<tr><td class="p-3" colspan="7">Loading...</td></tr>';
+  const { pageDocs, hasMore } = await queryBase(currentCursor);
+  renderRows(pageDocs);
+  pageInfo.textContent = `Showing ${pageDocs.length} rows`;
+  nextBtn.disabled = !hasMore;
+  prevBtn.disabled = pageStack.length === 0;
+}
+
+nextBtn.addEventListener('click', async () => {
+  if (rows.children.length === 0) return;
+  pageStack.push(rows.children[0]); // marker only; simplistic
+  await loadPage(true);
+});
+
+prevBtn.addEventListener('click', async () => {
+  if (pageStack.length === 0) return;
+  pageStack.pop();
+  await loadPage(false);
+});
+
+searchEmail.addEventListener('input', () => loadPage());
+filterService.addEventListener('change', () => loadPage());
+
+exportCsv.addEventListener('click', async () => {
+  const { pageDocs } = await queryBase();
+  const headers = ['Created','First Name','Last Name','Email','Phone','Service','Message','Page'];
+  const lines = [headers.join(',')];
+  pageDocs.forEach(d => {
+    const v = d.data();
+    const row = [
+      JSON.stringify(formatDate(v.createdAt)),
+      JSON.stringify(v.firstName||''),
+      JSON.stringify(v.lastName||''),
+      JSON.stringify(v.email||''),
+      JSON.stringify(v.phone||''),
+      JSON.stringify(v.service||''),
+      JSON.stringify(v.message||''),
+      JSON.stringify(v.page||'')
+    ].join(',');
+    lines.push(row);
+  });
+  const blob = new Blob([lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'submissions.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+updateView();
+</script>
+</body>
+</html>
+

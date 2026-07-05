@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Visa Services - Express Visa Facilitation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex-shrink-0 logo-container">
+                <a href="index.html" class="block hover:opacity-80 transition-opacity duration-200" title="Go to Homepage">
+                    <img src="images/logo.jpeg" alt="Express Visa Facilitation Logo" class="h-20 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; color: #0F218B; font-size: 1.5rem; font-weight: bold;">Express Visa Facilitation</div>
+                </a>
+            </div>
+            
+                    <!-- Navigation Links -->
+            <div class="hidden md:block">
+                <ul class="flex space-x-8 items-center">
+                    <!-- Our Company Dropdown -->
+                    <li class="relative group">
+                        <a href="#" class="transition-colors duration-200 font-medium flex items-center hover:opacity-80" style="color: #696969;">
+                            About Us
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">About Us</a>
+                                <a href="company.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Company</a>
+                                <a href="management-team.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Management Team</a>
+                                <a href="message-from-ceo.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Message from CEO</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Our Services Dropdown -->
+                    <li class="relative group">
+                        <a href="#" class="transition-colors duration-200 font-medium flex items-center hover:opacity-80" style="color: #696969;">
+                            Our Services
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                
+                                <a href="work-and-business-visa.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Work & Business Visas</a>
+                                <a href="tourist-and-visit-visas.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Tourist & Visit Visas</a>
+                                <a href="family-and-spousal-visa.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Family & Spousal Visas</a>
+                                <a href="immigration-and-residency.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Immigration & Residency</a>
+                                <a href="document-verification.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Document Verification</a>
+                                <a href="citizenship-immigration.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Citizenship and Immigration</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="citizenship-immigration.html" class="transition-colors duration-200 font-medium hover:opacity-80" style="color: #696969;">
+                            Citizenship and Immigration
+                        </a>
+                    </li>
+                    <!-- Top Destinations Dropdown -->
+                    <li class="relative group">
+                        <a href="#" class="transition-colors duration-200 font-medium flex items-center hover:opacity-80" style="color: #696969;">
+                            Top Destinations
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-52 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 max-h-96 overflow-y-auto"><div class="py-2">
+                                <a href="uk-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">UK Visa</a>
+                                <a href="us-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">US Visa</a>
+                                <a href="canada-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Canada Visa</a>
+                                <a href="schengen-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Schengen Visa</a>
+                                <a href="australia-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Australia Visa</a>
+                                <a href="japan-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Japan Visa</a>
+                                <a href="china-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">China Visa</a>
+                                <a href="uae-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">UAE Visa</a>
+                                <a href="ksa-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">KSA Visa</a>
+                                <a href="turkey-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Turkey Visa</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="transition-colors duration-200 font-medium hover:opacity-80" style="color: #696969;">
+                            Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button type="button" class="focus:outline-none" id="mobile-menu-button" style="color: #696969;">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    About Us
+                </a>
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Our Services
+                </a>
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Citizenship and Immigration
+                </a>
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Top Destinations
+                </a>
+                <a href="contact.html" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Section 1: Service Hero Banner -->
+    <section class="relative h-[50vh] w-full overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" 
+        style="background-image: url('images/top-destination-images/spain-visa.png');">
+    </div>
+        
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        
+        <!-- Main Content -->
+        <div class="relative h-full flex flex-col justify-center items-center px-6 z-10">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-left leading-tight mb-6 max-w-4xl">
+                Student Visa Services
+            </h1>
+            <p class="text-xl md:text-2xl text-white text-left max-w-3xl">
+                Your complete guide to studying abroad, from application to approval.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 2: Service Overview & Quick Facts -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-left max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold uppercase mb-4" style="color: #0F218B;">
+                    Service Overview
+                </h2>
+                
+                <div class="space-y-6" style="color: #696969;">
+                    <p class="text-lg leading-relaxed">
+                        <strong>Pakistani nationals require a visa to enter Spain and other Schengen States.</strong> A visa must be obtained before departure from Pakistan.<br><br>
+
+                        A visa is only intended to allow a foreign national to visit Spain and/or the other Schengen countries for a limited period of time. If you wish to reside in Spain for an extended period of time, you need to apply for a residence permit.<br><br>
+
+                        <strong>Visas can be granted for such purposes as:</strong><br>
+                        • Business visits<br>
+                        • Participation in cultural or sporting events<br>
+                        • Visits to relatives and friends<br>
+                        • Tourism<br><br>
+
+                        <strong>Application Timeline:</strong><br>
+                        An application should in principle be lodged <strong>at least 15 calendar days</strong> before the intended visit and cannot be lodged earlier than <strong>three months</strong> before the start of the intended visit.<br><br>
+
+                        Applicants who wish to apply for a Visa are requested to kindly read the information on <a href="https://pak.blsspainvisa.com/visa_type.php" class="ha">Visa Type.</a><br><br>
+
+                        Once your visa application <a href="https://pak.blsspainvisa.com/pdf/schengen_visa_application_form_english.pdf" class="ha">form</a> and supporting documents as per the <a href="https://pak.blsspainvisa.com/pdf/Schengen-Visa.pdf" class="ha">Checklist</a> are ready, you can <a href="https://pak.blsspainvisa.com/book_appointment.php" class="ha">book your appointment</a> for visa application center for submission of your application and biometrics.
+                    </p>
+                    
+                    <!-- Visa Fee Table -->
+                    <div class="overflow-x-auto mt-8">
+                        <h3 class="text-xl font-semibold mb-4" style="color: #0F218B;">Visa Fees</h3>
+                        <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">Visa Category</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">Age Group</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-200">Fee (PKR)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-medium">Tourist Visa</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Adults</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">24,036</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-medium">Short Duration Visa</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Children less than 6 years of age</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Free</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Children between 6-12 years</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">12,018</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <h4 class="text-lg font-semibold mb-2" style="color: #0F218B;">Important Payment Information</h4>
+                        <p class="text-sm text-gray-700 mb-2">
+                            <strong>Payment Method:</strong> The above-mentioned Visa Fee is to be paid only by cash.
+                        </p>
+                        <p class="text-sm text-gray-700 mb-2">
+                            <strong>BLS International Service Charge:</strong> PKR 5,078/- (inclusive of service tax 15% & education cess) payable in cash. Children under 6 are exempted from service charge.
+                        </p>
+                        <p class="text-sm text-gray-600">
+                            <em>Note: Exemption of Visa Fee for a child is applicable only in the case of Short-Term category, if the child's age is less than 6 years at the date of submission. The Visa Fee is subject to change without notice. The fee is non-refundable.</em>
+                        </p>
+                    </div>
+                    
+                    <p class="text-lg leading-relaxed mt-8">
+                        <!-- <strong>Photograph Requirements:</strong><br> -->
+                        Please provide one recent photograph (not more than 6 months old) of yourself, which should not have been used previously in the passport. The photograph should be in colour and:<br><br>
+
+                        • Taken against white background so that features are distinguishable and contrast against the background<br>
+                        • Clear share quality and with the face in focus<br>
+                        • Printed on normal photographic paper (camera print)<br>
+                        • Full face, non-smiling [without sunglasses, a hat/cap or other head covering, unless the applicant wears such items because of their religious belief or ethnic background<br><br>
+
+                        Please stick the Photograph on the Visa Application Form.<br>
+                        Please follow these instructions carefully. If photographs presented do not meet these requirements your application will be considered incomplete. A photo booth meeting these requirements is available at the centre.
+                    </p>
+                    
+                    <p class="text-lg leading-relaxed mt-8">
+                        <!-- <strong>Processing Information:</strong><br> -->
+                        Applications accepted at the Spain Visa Application Centre will be submitted on the next working day at the Embassy of Spain. Once the application has been submitted, the applicant can be further requested additional documentation in support of the same. Please note as per the instructions received from Embassy of Spain <strong>minimum processing time is 15 Calendar days</strong> (It may delay depending on case to case).<br><br>
+
+                        <!-- <strong>Important Deadlines:</strong><br> -->
+                        • All applications must be submitted at least <strong>15 days prior</strong> to the proposed date of travel to accommodate any unforeseen processing delays<br>
+                        • Kindly note if application submitted in Satellite centre, it may take up to <strong>48-72 hours</strong> in transit to New Islamabad / Lahore / Karachi<br>
+                        • All the applications received from Satellite centres will be sent to Embassy on next working day<br>
+                        • Processing time will start excluding the date of submission of application at BLS International Services<br><br>
+
+                        Applicants submitting the applications with short processing time will be required to fill up the <a href="https://pak.blsspainvisa.com/pdf/Declaration_form_290316.pdf" class="ha">Declaration form.</a><br><br>
+
+                        If you have already submitted your application, you can <a href="https://pak.blsspainvisa.com/track_application.php" class="ha">track it online.</a><br><br>
+
+                        <a href="https://pak.blsspainvisa.com/contact.php" class="ha">Spain Visa Application Centers contact details.</a>
+
+                        How Express Visa Facilitation can assist you?   
+
+Getting a Spain visa from Pakistan can be quite challenging compared to other Schengen countries. If you are not confident enough, it’s better to get professional assistance.
+
+Express Visa Facilitation is a trusted name for travelers who have visited (or want to visit) Schengen country in the past few years.  
+
+We know how to handle the paperwork and prepare the document correctly. Getting a Schengen visa for the first time is always hard. There are many things to consider. The same rules apply for the Spain Schengen visa.
+
+Let us help you make your journey to Spain easier. Contact us today, and talk to one of our staff about the eligibility and requirements.
+
+ 
+                    </p>
+                    
+                    <br><br>
+                    
+                    <!-- <strong>Key Information:</strong><br>
+                    <strong>Best For:</strong> Aspiring International Students<br>
+                    <strong>Processing Time:</strong> 4-8 Weeks (Average)<br>
+                    <strong>Key Requirements:</strong> University Offer Letter<br>
+                    <strong>Success Rate:</strong> 98% -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Step-by-Step Process -->
+    <section class="py-24 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Heading -->
+            <div class="text-left mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold uppercase mb-4" style="color: #0F218B;">
+                    Our Student Visa Process
+                </h2>
+            </div>
+
+            <!-- Process Steps -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-left">
+                    <div class="w-20 h-20 bg-white border-4 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg" style="border-color: #0F218B;">
+                        <span class="text-2xl font-bold" style="color: #0F218B;">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4" style="color: #0F218B;">Profile Assessment & University Shortlisting</h3>
+                    <p class="text-base leading-relaxed" style="color: #696969;">
+                        We conduct a comprehensive evaluation of your academic background, career goals, and preferences to identify the best universities and programs that match your profile and aspirations.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-left">
+                    <div class="w-20 h-20 bg-white border-4 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg" style="border-color: #0F218B;">
+                        <span class="text-2xl font-bold" style="color: #0F218B;">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4" style="color: #0F218B;">Application Filing & Documentation</h3>
+                    <p class="text-base leading-relaxed" style="color: #696969;">
+                        Our experts assist you in preparing and submitting all required documents, including academic transcripts, language test scores, financial statements, and visa application forms.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-left">
+                    <div class="w-20 h-20 bg-white border-4 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg" style="border-color: #0F218B;">
+                        <span class="text-2xl font-bold" style="color: #0F218B;">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4" style="color: #0F218B;">Interview Preparation & Final Submission</h3>
+                    <p class="text-base leading-relaxed" style="color: #696969;">
+                        We provide comprehensive interview preparation sessions and ensure your final application submission meets all requirements for a successful visa approval.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Section 5: Service-Specific FAQ -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-left mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold uppercase mb-4" style="color: #0F218B;">
+                    Student Visa FAQs
+                </h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-title">Can I work while I study on a student visa?</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-base leading-relaxed" style="color: #696969;">
+                            Yes, most countries allow international students to work part-time (usually 20 hours per week) during their studies and full-time during scheduled breaks. However, specific regulations vary by country and visa type. We'll guide you through the work authorization requirements for your chosen destination.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-title">What are the financial requirements for a student visa?</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-base leading-relaxed" style="color: #696969;">
+                            Financial requirements vary by country but typically include proof of funds to cover tuition fees, living expenses, and return travel costs. Generally, you need to show bank statements or sponsorship letters demonstrating sufficient funds for at least one academic year. We'll help you understand the specific requirements for your chosen country.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-title">How long does the student visa application process take?</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-base leading-relaxed" style="color: #696969;">
+                            Processing times vary by country and individual circumstances. Generally, student visa applications take 4-8 weeks for most countries, but some may take longer during peak seasons. We recommend starting the application process at least 3-4 months before your intended start date to ensure sufficient time for processing.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span class="accordion-title">Can I bring my family members on a student visa?</span>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-base leading-relaxed" style="color: #696969;">
+                            Many countries allow students to bring their spouse and dependent children on accompanying visas. However, regulations vary significantly by country and may require additional documentation and financial proof. We'll help you understand the family visa options available for your chosen destination and guide you through the application process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Final Call to Action -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-4xl mx-auto text-left">
+            <h2 class="text-3xl md:text-4xl font-bold uppercase mb-8" style="color: #0F218B;">
+                Ready to Start Your Study Abroad Journey?
+            </h2>
+            
+            <p class="text-xl mb-12" style="color: #696969;">
+                Let our expert team guide you through every step of your student visa application process.
+            </p>
+            
+            <button class="text-white font-bold py-4 px-12 rounded-full transition-all duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl hover:scale-105 mx-auto" 
+                    style="background-color: #0F218B;" 
+                    onmouseover="this.style.backgroundColor='#1e40af'" 
+                    onmouseout="this.style.backgroundColor='#0F218B'">
+                Book Your Student Visa Consultation
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    
+    <footer class="bg-gray-50 py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Horizontal Separator -->
+            <hr class="footer-separator">
+            
+            <!-- Bottom Sitemap Links Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 footer-sitemap-grid">
+                <!-- Column 1 - About Us -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        About Us
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="about.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                About The Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="company.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="management-team.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Management Team
+                            </a>
+                        </li>
+                        <li>
+                            <a href="message-from-ceo.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Message from CEO
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 - Top Destinations -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        Top Destinations
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><a href="uk-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>UK Visa</a></li>
+                        <li><a href="us-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>USA Visa</a></li>
+                        <li><a href="canada-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Canada Visa</a></li>
+                        <li><a href="schengen-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Schengen Visa</a></li>
+                        <li><a href="australia-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Australia Visa</a></li>
+                        <li><a href="japan-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Japan Visa</a></li>
+                        <li><a href="china-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>China Visa</a></li>
+                        <li><a href="uae-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>UAE Visa</a></li>
+                        <li><a href="ksa-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>KSA Visa</a></li>
+                        <li><a href="turkey-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Turkey Visa</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 - Quick Menu -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        Quick Menu
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="contact.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Contact Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="disclaimer.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Disclaimer
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 - Our Services -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        Our Services
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="work-and-business-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Work & Business Visas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tourist-and-visit-visas.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Tourist & Visit Visas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="family-and-spousal-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Family & Spousal Visas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="immigration-and-residency.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Immigration & Residency
+                            </a>
+                        </li>
+                        <li>
+                            <a href="document-verification.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Document Verification
+                            </a>
+                        </li>
+                        <li>
+                            <a href="citizenship-immigration.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Citizenship and Immigration
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/923208889091" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-4 right-4 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 z-50 group whatsapp-fab">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+                 <!-- FAQ Item 3 -->
+
+    </a>
+
+    <!-- External JavaScript -->
+    <script src="script.js" defer></script>
+</body>
+</html>

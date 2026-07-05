@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Visa Facilitation - Professional Visa Consulting Services</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo.jpeg">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo.jpeg">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.jpeg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
+    <!-- Firebase SDKs (compat for browser usage) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="bg-white border-b border-gray-200 px-6 py-4 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex-shrink-0 logo-container">
+                <a href="index.html" class="block hover:opacity-80 transition-opacity duration-200" title="Go to Homepage">
+                    <img src="images/logo.jpeg" alt="Express Visa Facilitation Logo" class="h-20 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; color: #0F218B; font-size: 1.5rem; font-weight: bold;">Express Visa Facilitation</div>
+                </a>
+            </div>
+            
+                    <!-- Navigation Links -->
+            <div class="hidden md:block">
+                <ul class="flex space-x-8 items-center">
+                    <!-- Our Company Dropdown -->
+                    <li class="relative group">
+                        <a href="#" class="transition-colors duration-200 font-medium flex items-center hover:opacity-80" style="color: #696969;">
+                            About Us
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="about.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">About Us</a>
+                                <a href="company.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Company</a>
+                                <a href="management-team.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Management Team</a>
+                                <a href="message-from-ceo.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Message from CEO</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- Our Services Dropdown -->
+                    <li class="relative group">
+                        <a href="#" class="transition-colors duration-200 font-medium flex items-center hover:opacity-80" style="color: #696969;">
+                            Our Services
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="py-2">
+                                <a href="work-and-business-visa.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Work & Business Visas</a>
+                                <a href="tourist-and-visit-visas.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Tourist & Visit Visas</a>
+                                <a href="family-and-spousal-visa.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Family & Spousal Visas</a>
+                                <a href="immigration-and-residency.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Immigration & Residency</a>
+                                <a href="document-verification.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Document Verification</a>
+                                <a href="citizenship-immigration.html" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color: #696969;">Citizenship and Immigration</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="citizenship-immigration.html" class="transition-colors duration-200 font-medium hover:opacity-80" style="color: #696969;">
+                            Citizenship and Immigration
+                        </a>
+                    </li>
+                    <!-- Top Destinations Dropdown -->
+                    <li class="relative group">
+                        <a href="#" class="transition-colors duration-200 font-medium flex items-center hover:opacity-80" style="color: #696969;">
+                            Top Destinations
+                            <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="absolute top-full left-0 mt-2 w-52 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 max-h-96 overflow-y-auto"><div class="py-2">
+                                <a href="uk-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">UK Visa</a>
+                                <a href="us-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">US Visa</a>
+                                <a href="canada-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Canada Visa</a>
+                                <a href="schengen-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Schengen Visa</a>
+                                <a href="australia-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Australia Visa</a>
+                                <a href="japan-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Japan Visa</a>
+                                <a href="china-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">China Visa</a>
+                                <a href="uae-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">UAE Visa</a>
+                                <a href="ksa-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">KSA Visa</a>
+                                <a href="turkey-visa.html" class="block px-4 py-1.5 text-sm hover:bg-gray-50" style="color: #696969;">Turkey Visa</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="transition-colors duration-200 font-medium hover:opacity-80" style="color: #696969;">
+                            Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button type="button" class="focus:outline-none" id="mobile-menu-button" style="color: #696969;">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    About Us
+                </a>
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Our Services
+                </a>
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Citizenship and Immigration
+                </a>
+                <a href="#" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Top Destinations
+                </a>
+                <a href="contact.html" class="block px-3 py-2 hover:opacity-80 rounded-md font-medium" style="color: #696969;">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen w-full overflow-hidden">
+        <!-- Background Video -->
+        <video 
+            class="hero-video"
+            autoplay 
+            muted 
+            loop
+            playsinline
+        >
+            <source src="video/home.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Green Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Main Content -->
+        <div class="hero-content h-full flex flex-col justify-center items-center px-6">
+            <!-- Main Headline -->
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center leading-tight mb-8 max-w-5xl">
+                We help people fulfil their travel aspirations for tourism, work, or study.
+            </h1>
+        </div>
+        
+        <!-- Call-to-Action Bar -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 w-full max-w-4xl px-6">
+            <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <!-- Left Text -->
+                <div class="text-gray-800 font-semibold text-lg sm:text-xl">
+                    Applying for a visa?
+                </div>
+                
+                <!-- Right Button -->
+                <button class="text-white font-bold py-3 px-8 rounded-full transition-all duration-300 flex items-center gap-2 shadow-md hover:shadow-lg hover:scale-105" style="background-color: #0F218B;" onmouseover="this.style.backgroundColor='#1e40af'" onmouseout="this.style.backgroundColor='#0F218B'">
+                    CLICK HERE
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Left Column - Text Content -->
+                <div class="space-y-6 order-1 md:order-1">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold uppercase mb-4" style="color: #0F218B;">
+                            WHAT WE DO
+                        </h2>
+                    </div>
+                    <div class="space-y-6 text-lg leading-relaxed" style="color: #696969;">
+                        <p>
+                        We provide visa application services to our clients remotely by arranging a video call. One of our team members can also visit your office or home for assistance, and a prior appointment is mandatory to avail this service.
+<br><br>
+You need to arrange copies of your valid passport and all supporting documents as per the visa type you intend to apply and leave the rest to us.
+<br><br>
+Furthermore, we can help you overcome your visa refusal as well. We provide careful evaluations of refusal letter to help you improve your chances of getting a visa on your next attempt.
+                        </p>
+
+                        <button class="border-2 font-bold py-3 px-8 rounded-full transition-all duration-200 flex items-center gap-2 hover:bg-green-50 hover:scale-105" style="border-color: #006A4E; color: #006A4E;">
+                            <a href="about.html">Learn More</a>
+                        <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Image -->
+                <div class="space-y-4 order-2 md:order-2">
+                    <img src="images/home-page-images/what-we-do-1.jpg" 
+                         alt="Professional office consultation and visa services" 
+                         class="w-full h-64 object-cover rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                    <img src="images/home-page-images/what-we-do-2.jpg" 
+                         alt="Modern office workspace for visa consultation" 
+                         class="w-full h-64 object-cover rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Travel Destinations Section -->
+    <section class="py-24 px-6 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Left Column - Images -->
+                <div class="space-y-4 order-2 md:order-1">
+                    <img src="images/home-page-images/top-travel-1.jpeg" 
+                         alt="Travel destinations collage" 
+                         class="w-full h-48 object-cover rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                    <img src="images/home-page-images/top-travel-2.png" 
+                         alt="Travel destinations collage"
+                         class="w-full h-48 object-cover rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer">
+                </div>
+                
+                <!-- Right Column - Text -->
+                <div class="space-y-6 order-1 md:order-2">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold uppercase mb-4" style="color: #006A4E;">
+                            TOP TRAVEL DESTINATIONS
+                        </h2>
+                        <div class="w-16 h-1 rounded-full" style="background-color: #006A4E;"></div>
+                    </div>
+                    <div class="space-y-4" style="color: #696969;">
+                        <p class="text-lg leading-relaxed">
+                            Express Visa Facilitation has up-to-date information about visit, study, and business visa requirements and complete processes of the top travel destinations of the world.
+<br><br>
+We can facilitate you completing your visa application for these countries. You can also find details on this website, which we encourage you to go through so you have information of supporting documents, visa fee, visa processing time by the embassy in particular.
+<br><br>
+We can also assist you to arrange travel insurance, airline ticket and hotel reservations through our trusted partners.
+                        </p>
+                        <button class="border-2 font-bold py-3 px-8 rounded-full transition-all duration-200 flex items-center gap-2 hover:bg-green-50 hover:scale-105" style="border-color: #006A4E; color: #006A4E;">
+                            <a href="about.html">Learn More</a>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Heading -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold uppercase mb-4" style="color: #0F218B;">
+                    WHY CHOOSE US
+                </h2>
+            </div>
+
+            <!-- Desktop Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="w-20 h-20 border border-gray-300 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10" style="color: #0F218B;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: #0F218B;">Our Team</h3>
+                    <p class="text-base leading-relaxed" style="color: #696969;">
+Our team is adept and eager in making your visa application process seamless. We have up-to-date knowledge about visa types and supporting documents besides we can guide how you need to present your financial and personal circumstances that will help you reduce the risk of visa refusal.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="w-20 h-20 border border-gray-300 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10" style="color: #0F218B;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: #0F218B;">Our Expertise</h3>
+                    <p class="text-base leading-relaxed" style="color: #696969;">
+Our team is passionate and committed to providing best possible visa application services to our clients. With more than fourteen years of working experience with various foreign missions in Pakistan, handling thousands of visa applications, we can assist you to improve the chance of getting travel visa.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-all duration-300">
+                    <div class="w-20 h-20 border border-gray-300 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10" style="color: #0F218B;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4" style="color: #0F218B;">Data Security</h3>
+                    <p class="text-base leading-relaxed" style="color: #696969;">
+We give the utmost priority to ensuring data security and privacy. All your personal information is removed from our system as soon as your visa application procedure is successfully closed. Our terms and conditions policy ensures a high degree of transparency between us and our clientele.
+
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="py-12 px-6 relative overflow-hidden" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
+        <!-- Enhanced Background Patterns -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 30px 30px;"></div>
+        </div>
+
+        <!-- Compact Geometric Shapes -->
+        <div class="absolute top-10 right-8 w-32 h-32 opacity-8" style="background: radial-gradient(circle, #0F218B 0%, transparent 70%); border-radius: 50%;"></div>
+        <div class="absolute bottom-10 left-8 w-40 h-40 opacity-8" style="background: radial-gradient(circle, #006A4E 0%, transparent 70%); border-radius: 50%;"></div>
+        <div class="absolute top-1/2 left-1/4 w-24 h-24 opacity-4" style="background: linear-gradient(135deg, #0F218B, #006A4E); border-radius: 8px; transform: translate(-50%, -50%) rotate(45deg);"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-16 h-16 opacity-4" style="background: linear-gradient(135deg, #006A4E, #0F218B); border-radius: 50%;"></div>
+        
+        <!-- Small Floating Icons -->
+        <div class="absolute top-1/4 left-4 opacity-8 animate-pulse hidden md:block">
+            <i class="fas fa-passport text-xl" style="color: #006A4E;"></i>
+        </div>
+        <div class="absolute top-1/3 right-4 opacity-8 animate-pulse hidden md:block" style="animation-delay: 0.5s;">
+            <i class="fas fa-plane text-xl" style="color: #0F218B;"></i>
+        </div>
+        <div class="absolute bottom-1/3 left-4 opacity-8 animate-pulse hidden md:block" style="animation-delay: 1s;">
+            <i class="fas fa-file-alt text-xl" style="color: #006A4E;"></i>
+        </div>
+        <div class="absolute bottom-1/4 right-4 opacity-8 animate-pulse hidden md:block" style="animation-delay: 1.5s;">
+            <i class="fas fa-check-circle text-xl" style="color: #0F218B;"></i>
+        </div>
+        
+        <!-- Small Statistics Boxes -->
+        <div class="absolute top-20 left-1/4 transform -translate-x-1/2 hidden lg:block">
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1.5 border border-white/20">
+                <span class="text-white text-xs font-semibold">5000+ Visas</span>
+            </div>
+        </div>
+        <div class="absolute top-1/2 right-1/4 transform translate-x-1/2 hidden lg:block">
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1.5 border border-white/20">
+                <span class="text-white text-xs font-semibold">98% Success</span>
+            </div>
+        </div>
+        <div class="absolute bottom-20 left-1/3 transform -translate-x-1/2 hidden lg:block">
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg px-3 py-1.5 border border-white/20">
+                <span class="text-white text-xs font-semibold">14+ Years</span>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <!-- Compact Section Header -->
+            <div class="text-center mb-10">
+                <div class="flex flex-wrap justify-center gap-2 mb-4">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
+                        <span class="text-white text-xs font-semibold">Free Consultation</span>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
+                        <span class="text-white text-xs font-semibold">Quick Process</span>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 border border-white/20">
+                        <span class="text-white text-xs font-semibold">Expert Support</span>
+                    </div>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-3 text-white">
+                    How It Works
+            </h2>
+                <p class="text-base md:text-lg mb-4" style="background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    Your journey to visa success, simplified
+                </p>
+                <div class="w-16 h-0.5 mx-auto rounded-full" style="background: linear-gradient(90deg, #0F218B 0%, #006A4E 100%);"></div>
+        </div>
+
+            <!-- Steps Container with Zigzag Layout -->
+        <div class="relative">
+                <!-- Compact Desktop Connecting Lines with Arrows -->
+                <svg class="hidden lg:block absolute top-0 left-0 w-full h-full pointer-events-none" style="z-index: 1;">
+                    <!-- Path from Step 1 to Step 2 -->
+                    <path d="M 15% 50 Q 50% 30, 85% 50" stroke="url(#gradient1)" stroke-width="3" fill="none" stroke-dasharray="6,3" opacity="0.7"/>
+                    <circle cx="50%" cy="30%" r="3" fill="url(#gradient1)" opacity="0.7"/>
+                    <path d="M 82% 48 L 85% 50 L 82% 52" stroke="url(#gradient1)" stroke-width="3" fill="none" opacity="0.7"/>
+                    
+                    <!-- Path from Step 2 to Step 3 -->
+                    <path d="M 85% 50 Q 50% 70, 15% 50" stroke="url(#gradient2)" stroke-width="3" fill="none" stroke-dasharray="6,3" opacity="0.7"/>
+                    <circle cx="50%" cy="70%" r="3" fill="url(#gradient2)" opacity="0.7"/>
+                    <path d="M 18% 48 L 15% 50 L 18% 52" stroke="url(#gradient2)" stroke-width="3" fill="none" opacity="0.7"/>
+                    
+                    <!-- Path from Step 3 to Step 4 -->
+                    <path d="M 15% 50 Q 50% 30, 85% 50" stroke="url(#gradient3)" stroke-width="3" fill="none" stroke-dasharray="6,3" opacity="0.7"/>
+                    <circle cx="50%" cy="30%" r="3" fill="url(#gradient3)" opacity="0.7"/>
+                    <path d="M 82% 48 L 85% 50 L 82% 52" stroke="url(#gradient3)" stroke-width="3" fill="none" opacity="0.7"/>
+                    
+                    <defs>
+                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#0F218B;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#006A4E;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#006A4E;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0F218B;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#0F218B;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#006A4E;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                        </svg>
+                
+                <!-- Small Icons Along Connection Paths (Desktop) -->
+                <div class="hidden lg:block absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20" style="z-index: 1;">
+                    <i class="fas fa-check text-sm" style="color: #006A4E;"></i>
+                    </div>
+                <div class="hidden lg:block absolute bottom-1/4 left-1/2 transform -translate-x-1/2 translate-y-1/2 opacity-20" style="z-index: 1;">
+                    <i class="fas fa-check text-sm" style="color: #0F218B;"></i>
+                </div>
+
+                <!-- Mobile Vertical Timeline Line -->
+                <div class="lg:hidden absolute left-8 md:left-1/2 top-0 bottom-0 w-1 transform md:-translate-x-1/2" style="background: linear-gradient(180deg, #0F218B 0%, #006A4E 100%); opacity: 0.3; z-index: 1;"></div>
+
+                <!-- Steps -->
+                <div class="space-y-8 md:space-y-10 relative" style="z-index: 2;">
+                    <!-- Step 1: Initial Consultation (Left) -->
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-start">
+                        <div class="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
+                            <div class="bg-gradient-to-br from-white via-blue-50 to-gray-100 rounded-xl p-5 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl relative overflow-hidden" style="border: 2px solid #0F218B;">
+                                <div class="absolute top-0 right-0 w-20 h-20 opacity-8" style="background: linear-gradient(135deg, #0F218B, #006A4E); border-radius: 0 0 0 100%;"></div>
+                                <div class="flex items-start gap-4 relative z-10">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, #0F218B 0%, #006A4E 100%); box-shadow: 0 5px 15px rgba(15, 33, 139, 0.3);">
+                                            <i class="fas fa-handshake text-2xl text-white"></i>
+                    </div>
+                                        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto" style="background: linear-gradient(135deg, #0F218B 0%, #3b82f6 100%); box-shadow: 0 3px 10px rgba(15, 33, 139, 0.2);">
+                                            <span class="text-lg font-bold text-white">01</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <div class="flex items-center gap-2 mb-2 flex-wrap">
+                                            <h3 class="text-lg md:text-xl font-bold" style="color: #0F218B;">
+                                                Initial Consultation
+                                            </h3>
+                                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
+                                                <i class="fas fa-clock text-xs"></i>
+                                                <span>1-2 Days</span>
+                                            </span>
+                                        </div>
+                                        <p class="text-sm leading-snug mb-3" style="color: #475569;">
+                                            Book your personalized consultation with our visa experts for free initial assessment
+                                        </p>
+                                        <ul class="space-y-1">
+                                            <li class="flex items-center gap-1.5">
+                                                <i class="fas fa-check text-xs" style="color: #006A4E;"></i>
+                                                <span class="text-xs" style="color: #64748b;">Free assessment</span>
+                                            </li>
+                                            <li class="flex items-center gap-1.5">
+                                                <i class="fas fa-check text-xs" style="color: #006A4E;"></i>
+                                                <span class="text-xs" style="color: #64748b;">Video or in-person</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/2 hidden lg:block relative">
+                            <div class="absolute top-1/2 left-0 transform -translate-y-1/2 opacity-15">
+                                <i class="fas fa-arrow-right text-4xl" style="color: #0F218B;"></i>
+                            </div>
+                    </div>
+                </div>
+
+                    <!-- Step 2: Documentation & Strategy (Right) -->
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+                        <div class="lg:w-1/2 hidden lg:block relative">
+                            <div class="absolute top-1/2 right-0 transform -translate-y-1/2 opacity-15">
+                                <i class="fas fa-arrow-left text-4xl" style="color: #006A4E;"></i>
+                    </div>
+                        </div>
+                        <div class="lg:w-1/2 lg:pl-8 mb-6 lg:mb-0">
+                            <div class="bg-gradient-to-br from-white via-green-50 to-gray-100 rounded-xl p-5 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl relative overflow-hidden" style="border: 2px solid #006A4E;">
+                                <div class="absolute top-0 left-0 w-20 h-20 opacity-8" style="background: linear-gradient(135deg, #006A4E, #0F218B); border-radius: 0 0 100% 0;"></div>
+                                <div class="flex items-start gap-4 relative z-10">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, #006A4E 0%, #0F218B 100%); box-shadow: 0 5px 15px rgba(0, 106, 78, 0.3);">
+                                            <i class="fas fa-file-signature text-2xl text-white"></i>
+                                        </div>
+                                        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto" style="background: linear-gradient(135deg, #006A4E 0%, #10b981 100%); box-shadow: 0 3px 10px rgba(0, 106, 78, 0.2);">
+                                            <span class="text-lg font-bold text-white">02</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <div class="flex items-center gap-2 mb-2 flex-wrap">
+                                            <h3 class="text-lg md:text-xl font-bold" style="color: #0F218B;">
+                                                Documentation & Strategy
+                                            </h3>
+                                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
+                                                <i class="fas fa-clock text-xs"></i>
+                                                <span>3-5 Days</span>
+                                            </span>
+                                        </div>
+                                        <p class="text-sm leading-snug mb-3" style="color: #475569;">
+                                            We analyze your profile and prepare a winning documentation strategy
+                                        </p>
+                                        <ul class="space-y-1">
+                                            <li class="flex items-center gap-1.5">
+                                                <i class="fas fa-check text-xs" style="color: #006A4E;"></i>
+                                                <span class="text-xs" style="color: #64748b;">Profile analysis</span>
+                                            </li>
+                                            <li class="flex items-center gap-1.5">
+                                                <i class="fas fa-check text-xs" style="color: #006A4E;"></i>
+                                                <span class="text-xs" style="color: #64748b;">Document preparation</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
+                    <!-- Step 3: Application Processing (Left) -->
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-start">
+                        <div class="lg:w-1/2 lg:pr-8 mb-6 lg:mb-0">
+                            <div class="bg-gradient-to-br from-white via-blue-50 to-gray-100 rounded-xl p-5 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl relative overflow-hidden" style="border: 2px solid #0F218B;">
+                                <div class="absolute top-0 right-0 w-20 h-20 opacity-8" style="background: linear-gradient(135deg, #0F218B, #006A4E); border-radius: 0 0 0 100%;"></div>
+                                <div class="flex items-start gap-4 relative z-10">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, #0F218B 0%, #006A4E 100%); box-shadow: 0 5px 15px rgba(15, 33, 139, 0.3);">
+                                            <i class="fas fa-cogs text-2xl text-white"></i>
+                    </div>
+                                        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto" style="background: linear-gradient(135deg, #0F218B 0%, #3b82f6 100%); box-shadow: 0 3px 10px rgba(15, 33, 139, 0.2);">
+                                            <span class="text-lg font-bold text-white">03</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <div class="flex items-center gap-2 mb-2 flex-wrap">
+                                            <h3 class="text-lg md:text-xl font-bold" style="color: #0F218B;">
+                                                Application Processing
+                                            </h3>
+                                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
+                                                <i class="fas fa-clock text-xs"></i>
+                                                <span>5-10 Days</span>
+                                            </span>
+                                        </div>
+                                        <p class="text-sm leading-snug mb-3" style="color: #475569;">
+                                            Our team handles the complete application process and submission
+                                        </p>
+                                        <ul class="space-y-1">
+                                            <li class="flex items-center gap-1.5">
+                                                <i class="fas fa-check text-xs" style="color: #006A4E;"></i>
+                                                <span class="text-xs" style="color: #64748b;">Form submission</span>
+                                            </li>
+                                            <li class="flex items-center gap-1.5">
+                                                <i class="fas fa-check text-xs" style="color: #006A4E;"></i>
+                                                <span class="text-xs" style="color: #64748b;">Status updates</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/2 hidden lg:block relative">
+                            <div class="absolute top-1/2 left-0 transform -translate-y-1/2 opacity-15">
+                                <i class="fas fa-arrow-right text-4xl" style="color: #0F218B;"></i>
+                            </div>
+                    </div>
+                </div>
+
+                    <!-- Step 4: Success & Support (Right) -->
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-end">
+                        <div class="lg:w-1/2 hidden lg:block relative">
+                            <div class="absolute top-1/2 right-0 transform -translate-y-1/2 opacity-15">
+                                <i class="fas fa-check-double text-4xl" style="color: #006A4E;"></i>
+                    </div>
+                        </div>
+                        <div class="lg:w-1/2 lg:pl-8 mb-6 lg:mb-0">
+                            <div class="bg-gradient-to-br from-white via-green-50 to-gray-100 rounded-xl p-5 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl relative overflow-hidden" style="border: 2px solid #006A4E;">
+                                <div class="absolute top-0 left-0 w-20 h-20 opacity-8" style="background: linear-gradient(135deg, #006A4E, #0F218B); border-radius: 0 0 100% 0;"></div>
+                                <div class="flex items-start gap-4 relative z-10">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-16 h-16 rounded-full flex items-center justify-center mb-2" style="background: linear-gradient(135deg, #006A4E 0%, #0F218B 100%); box-shadow: 0 5px 15px rgba(0, 106, 78, 0.3);">
+                                            <i class="fas fa-trophy text-2xl text-white"></i>
+                                        </div>
+                                        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto" style="background: linear-gradient(135deg, #006A4E 0%, #10b981 100%); box-shadow: 0 3px 10px rgba(0, 106, 78, 0.2);">
+                                            <span class="text-lg font-bold text-white">04</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow">
+                                        <div class="flex items-center gap-2 mb-2 flex-wrap">
+                                            <h3 class="text-lg md:text-xl font-bold" style="color: #0F218B;">
+                                                Success & Support
+                                            </h3>
+                                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded-full flex items-center gap-1">
+                                                <i class="fas fa-infinity text-xs"></i>
+                                                <span>Ongoing</span>
+                                            </span>
+                                        </div>
+                                        <p class="text-sm leading-snug mb-3" style="color: #475569;">
+                                            Receive your approved visa with ongoing post-approval support
+                                        </p>
+                                        <ul class="space-y-1">
+                                            <li class="flex items-center gap-1.5">
+                                                <i class="fas fa-check text-xs" style="color: #006A4E;"></i>
+                                                <span class="text-xs" style="color: #64748b;">Visa collection</span>
+                                            </li>
+                                            <li class="flex items-center gap-1.5">
+                                                <i class="fas fa-check text-xs" style="color: #006A4E;"></i>
+                                                <span class="text-xs" style="color: #64748b;">24/7 support</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Get In Touch Section -->
+    <section class="py-24 px-6 relative overflow-hidden" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f0f4f8 100%);">
+        <!-- Decorative Background Element -->
+        <div class="absolute top-0 right-0 w-96 h-96 opacity-5" style="background: radial-gradient(circle, #0F218B 0%, transparent 70%); transform: translate(30%, -30%);"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 opacity-5" style="background: radial-gradient(circle, #006A4E 0%, transparent 70%); transform: translate(-30%, 30%);"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Two Column Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+                <!-- Left Column - Contact Information -->
+                <div class="space-y-8">
+                    <!-- Section Heading -->
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-1 h-12 rounded-full" style="background-color: #006A4E;"></div>
+                            <h2 class="text-3xl md:text-4xl font-bold uppercase" style="color: #0F218B;">
+                                Get In Touch
+                    </h2>
+                        </div>
+                        <div class="w-16 h-1 rounded-full mb-5" style="background-color: #006A4E;"></div>
+                        <p class="text-lg leading-relaxed mb-6" style="color: #696969;">
+                            Ready to start your visa journey? Our expert team is here to guide you through every step. With over 14 years of experience and a 99% success rate, we make the complex simple.
+                    </p>
+                </div>
+                
+                    <!-- Trust Indicator -->
+                    <div class="bg-white rounded-xl p-6 border-l-4 shadow-md hover:shadow-lg transition-shadow duration-300" style="border-color: #006A4E;">
+                        <div class="flex items-center gap-3 mb-3">
+                            <i class="fas fa-check-circle text-2xl" style="color: #006A4E;"></i>
+                            <h3 class="text-lg font-bold" style="color: #0F218B;">Why Choose EVF?</h3>
+                        </div>
+                        <ul class="space-y-2" style="color: #696969;">
+                            <li class="flex items-start gap-2 transition-transform duration-200 hover:translate-x-1">
+                                <i class="fas fa-check text-sm mt-1.5" style="color: #006A4E;"></i>
+                                <span>14+ years of proven expertise</span>
+                            </li>
+                            <li class="flex items-start gap-2 transition-transform duration-200 hover:translate-x-1">
+                                <i class="fas fa-check text-sm mt-1.5" style="color: #006A4E;"></i>
+                                <span>99% visa success rate</span>
+                            </li>
+                            <li class="flex items-start gap-2 transition-transform duration-200 hover:translate-x-1">
+                                <i class="fas fa-check text-sm mt-1.5" style="color: #006A4E;"></i>
+                                <span>Personalized service for every client</span>
+                            </li>
+                            <li class="flex items-start gap-2 transition-transform duration-200 hover:translate-x-1">
+                                <i class="fas fa-check text-sm mt-1.5" style="color: #006A4E;"></i>
+                                <span>Expert guidance from application to approval</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="space-y-5">
+                        <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-white hover:shadow-md transition-all duration-300 group">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300" style="background-color: #006A4E;">
+                                <i class="fas fa-phone-alt text-white text-lg"></i>
+                            </div>
+                <div>
+                                <h4 class="text-lg font-semibold mb-1" style="color: #0F218B;">Phone</h4>
+                                <a href="tel:+923208889091" class="text-base hover:opacity-80 transition-opacity" style="color: #696969;">+92 320 888 9091</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-white hover:shadow-md transition-all duration-300 group">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300" style="background-color: #006A4E;">
+                                <i class="fas fa-envelope text-white text-lg"></i>
+                            </div>
+                    <div>
+                                <h4 class="text-lg font-semibold mb-1" style="color: #0F218B;">Email</h4>
+                                <a href="mailto:info@evisafacilitation.com" class="text-base hover:opacity-80 transition-opacity" style="color: #696969;">info@evisafacilitation.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-white hover:shadow-md transition-all duration-300 group">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300" style="background-color: #006A4E;">
+                                <i class="fas fa-map-marker-alt text-white text-lg"></i>
+                            </div>
+                <div>
+                                <h4 class="text-lg font-semibold mb-1" style="color: #0F218B;">Address</h4>
+                                <p class="text-base leading-relaxed" style="color: #696969;">Tower 75, Suite # 03, 6th Floor<br>75-A Block L, Gulberg III<br>Lahore, Pakistan</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-white hover:shadow-md transition-all duration-300 group">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-300" style="background-color: #006A4E;">
+                                <i class="fas fa-clock text-white text-lg"></i>
+                            </div>
+                    <div>
+                                <h4 class="text-lg font-semibold mb-1" style="color: #0F218B;">Office Hours</h4>
+                                <p class="text-base leading-relaxed" style="color: #696969;">Monday-Friday: 9:00AM – 5:00PM<br>Saturday-Sunday: 11:00AM – 3:00PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="pt-4">
+                        <p class="text-base font-medium mb-4" style="color: #696969;">
+                            <i class="fas fa-arrow-right mr-2" style="color: #006A4E;"></i>
+                            Fill out the form to get started with your visa application today!
+                        </p>
+                        <div class="flex items-center gap-2 text-sm" style="color: #696969;">
+                            <i class="fas fa-shield-alt" style="color: #006A4E;"></i>
+                            <span>Your information is secure and confidential</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Contact Form -->
+                <div class="bg-white rounded-2xl p-8 lg:p-10 shadow-xl border border-gray-100 hover:shadow-2xl transition-shadow duration-300 relative">
+                    <!-- Decorative Icon -->
+                    <div class="absolute top-6 right-6 opacity-10">
+                        <i class="fas fa-paper-plane text-6xl" style="color: #0F218B;"></i>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-8">
+                            <div class="w-1 h-8 rounded-full" style="background-color: #006A4E;"></div>
+                            <h3 class="text-2xl font-bold" style="color: #0F218B;">Send us a Message</h3>
+                        </div>
+                        
+                        <form class="space-y-5" id="contactForm">
+                            <!-- Name Fields - Side by Side -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium mb-2" style="color: #696969;">First Name</label>
+                                    <input 
+                                        type="text" 
+                                        id="firstName" 
+                                        name="firstName" 
+                                        required
+                                        class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 focus:outline-none transition-all duration-200 hover:border-gray-400 hover:shadow-sm"
+                                        placeholder="First name"
+                                    >
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium mb-2" style="color: #696969;">Last Name</label>
+                                    <input 
+                                        type="text" 
+                                        id="lastName" 
+                                        name="lastName" 
+                                        required
+                                        class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 focus:outline-none transition-all duration-200 hover:border-gray-400 hover:shadow-sm"
+                                        placeholder="Last name"
+                                    >
+                                </div>
+                            </div>
+                            
+                            <!-- Email and Phone - Side by Side -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                    <label for="email" class="block text-sm font-medium mb-2" style="color: #696969;">Email Address</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    required
+                                        class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 focus:outline-none transition-all duration-200 hover:border-gray-400 hover:shadow-sm"
+                                        placeholder="your@email.com"
+                                >
+                            </div>
+                            <div>
+                                    <label for="phone" class="block text-sm font-medium mb-2" style="color: #696969;">Phone Number</label>
+                                <input 
+                                    type="tel" 
+                                    id="phone" 
+                                    name="phone" 
+                                    required
+                                        class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 focus:outline-none transition-all duration-200 hover:border-gray-400 hover:shadow-sm"
+                                        placeholder="+92 300 1234567"
+                                >
+                                </div>
+                            </div>
+                            
+                            <!-- Service Dropdown - Full Width -->
+                            <div>
+                                <label for="service" class="block text-sm font-medium mb-2" style="color: #696969;">Service of Interest</label>
+                                <select 
+                                    id="service" 
+                                    name="service" 
+                                    required
+                                    class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 focus:outline-none transition-all duration-200 hover:border-gray-400 hover:shadow-sm cursor-pointer"
+                                >
+                                    <option value="">Select a service</option>
+                                    <option value="work-visa">Work Visa</option>
+                                    <option value="visit-visa">Visit Visa</option>
+                                    <option value="immigration">Immigration</option>
+                                    <option value="citizenship">Citizenship and Immigration</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Message Textarea - Full Width, Reduced Height -->
+                            <div>
+                                <label for="message" class="block text-sm font-medium mb-2" style="color: #696969;">Your Message</label>
+                                <textarea 
+                                    id="message" 
+                                    name="message" 
+                                    rows="3" 
+                                    required
+                                    class="w-full px-4 py-2.5 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-20 focus:outline-none transition-all duration-200 hover:border-gray-400 hover:shadow-sm resize-vertical"
+                                    placeholder="Tell us about your visa requirements or any questions you have..."
+                                ></textarea>
+                            </div>
+                            
+                            <!-- Submit Button - Primary Blue with Enhanced Animations -->
+                            <button 
+                                type="submit" 
+                                class="w-full text-white font-bold py-4 px-8 rounded-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] relative overflow-hidden group"
+                                style="background-color: #0F218B;"
+                            >
+                                <span class="relative z-10 flex items-center justify-center gap-2">
+                                Send Message
+                                    <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                                </span>
+                                <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-50 py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- Horizontal Separator -->
+            <hr class="footer-separator">
+            
+            <!-- Bottom Sitemap Links Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 footer-sitemap-grid">
+                <!-- Column 1 - About Us -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        About Us
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="about.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                About The Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="company.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="management-team.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Management Team
+                            </a>
+                        </li>
+                        <li>
+                            <a href="message-from-ceo.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Message from CEO
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 - Top Destinations -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        Top Destinations
+                    </h3>
+                    <ul class="space-y-3">
+                        <li><a href="uk-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>UK Visa</a></li>
+                        <li><a href="us-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>USA Visa</a></li>
+                        <li><a href="canada-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Canada Visa</a></li>
+                        <li><a href="schengen-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Schengen Visa</a></li>
+                        <li><a href="australia-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Australia Visa</a></li>
+                        <li><a href="japan-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Japan Visa</a></li>
+                        <li><a href="china-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>China Visa</a></li>
+                        <li><a href="uae-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>UAE Visa</a></li>
+                        <li><a href="ksa-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>KSA Visa</a></li>
+                        <li><a href="turkey-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;"><svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>Turkey Visa</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 - Quick Menu -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        Quick Menu
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="contact.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Contact Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="disclaimer.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Disclaimer
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 - Our Services -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4 pb-2 footer-column-header" style="color: #0F218B;">
+                        Our Services
+                    </h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="work-and-business-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Work & Business Visas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tourist-and-visit-visas.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Tourist & Visit Visas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="family-and-spousal-visa.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Family & Spousal Visas
+                            </a>
+                        </li>
+                        <li>
+                            <a href="immigration-and-residency.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Immigration & Residency
+                            </a>
+                        </li>
+                        <li>
+                            <a href="document-verification.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Document Verification
+                            </a>
+                        </li>
+                        <li>
+                            <a href="citizenship-immigration.html" class="flex items-center text-sm footer-link" style="color: #696969;">
+                                <svg class="w-3 h-3 mr-2 flex-shrink-0 footer-link-icon" style="color: #006A4E;" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Citizenship and Immigration
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/923208889091" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-4 right-4 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 z-50 group whatsapp-fab">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+                 <!-- FAQ Item 3 -->
+
+    </a>
+
+    <!-- External JavaScript -->
+    <script src="script.js" defer></script>
+</body>
+</html>
