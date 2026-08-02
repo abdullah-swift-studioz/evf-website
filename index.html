@@ -164,21 +164,25 @@
     <!-- Hero Section -->
     <section class="relative h-screen w-full overflow-hidden">
         <!-- Background Video.
-             poster renders instantly and stays visible until the video has
-             enough data to play, so the hero is never blank -- including right
-             now, while video/home.mp4 is missing from the repo.
-             preload="metadata" keeps the file off the critical path; the
-             browser fetches it after the page is interactive. -->
+             The poster is the video's own first frame, so when playback starts
+             there is no visual jump. It is preloaded and paints immediately.
+
+             The source is in data-src, not src: script.js attaches it only on
+             wider viewports, and skips it on a metered connection, when the
+             visitor has asked for reduced motion, or when Save-Data is set.
+             A decorative 786KB background is not worth that cost on a phone --
+             those visitors just get the poster, which is what they would see
+             for the first second or two anyway. -->
         <video
             class="hero-video"
             poster="images/home-page-images/hero-poster.jpg"
-            preload="metadata"
+            preload="none"
+            data-src="video/home.mp4"
             autoplay
             muted
             loop
             playsinline
         >
-            <source src="video/home.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         

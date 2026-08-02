@@ -64,8 +64,45 @@ function getDb() {
     return firebasePromise;
 }
 
+// ---------------------------------------------------------------------------
+// Hero background video
+//
+// Attaches the source only where the download is worth it. The poster is the
+// video's first frame, so anyone who does not get the video still sees the
+// intended hero -- they just see a still instead of motion.
+//
+// Skipped on narrow viewports (the video is a full-bleed desktop backdrop),
+// when the visitor has asked for reduced motion, and when the browser reports
+// Save-Data or a slow connection.
+// ---------------------------------------------------------------------------
+function initHeroVideo() {
+    const video = document.querySelector('video.hero-video[data-src]');
+    if (!video) return;
+
+    if (window.innerWidth < 768) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const conn = navigator.connection;
+    if (conn) {
+        if (conn.saveData) return;
+        if (/(^|-)2g$/.test(conn.effectiveType || '')) return;
+    }
+
+    const source = document.createElement('source');
+    source.src = video.dataset.src;
+    source.type = 'video/mp4';
+    video.appendChild(source);
+    video.load();
+
+    // autoplay can still be refused (e.g. iOS low power mode); the poster stays.
+    const attempt = video.play();
+    if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
+}
+
 // Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
+    initHeroVideo();
+
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     
