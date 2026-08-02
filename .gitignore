@@ -7,3 +7,7 @@ New folder/
 
 # Local tooling
 .code-review-graph/
+
+# Node tooling for the Tailwind build (dist/tailwind.css IS committed)
+node_modules/
+tools/renames.txt

@@ -19,7 +19,9 @@ nav .flex-shrink-0 img {
 
 /* Custom styles for VisaConsult website */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Inter is loaded via <link rel="stylesheet"> in each page's <head>, alongside
+   a preconnect. An @import here would serialise the requests: the browser has
+   to download and parse styles.css before it even discovers the font CSS. */
 
 body {
     font-family: 'Inter', sans-serif;
@@ -778,4 +780,34 @@ footer .footer-separator {
 }
 .ha{
     color:  rgb(88, 177, 255);
+}
+
+/* Nav hover colour. Previously two JS listeners per link writing inline styles;
+   CSS does it without touching the main thread. */
+nav a:hover {
+    color: #0F218B;
+}
+
+/* Scroll reveal. Only elements JS has opted in (below the first viewport) get
+   .reveal, so above-the-fold content is never hidden and paints immediately. */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }

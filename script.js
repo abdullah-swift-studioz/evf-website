@@ -1,23 +1,67 @@
 // VisaConsult website JavaScript functionality
 
-// Firebase Initialization (compat SDK)
-try {
-    if (typeof firebase !== 'undefined' && !firebase.apps.length) {
-        const firebaseConfig = {
-            apiKey: "AIzaSyDi2KWdwFkQCbuCgj9Qx2KRp7J9ji5iBrY",
-            authDomain: "evf-backend.firebaseapp.com",
-            projectId: "evf-backend",
-            storageBucket: "evf-backend.firebasestorage.app",
-            messagingSenderId: "668853277727",
-            appId: "1:668853277727:web:b8c47760ba1f11f4fab12a",
-            measurementId: "G-KRR863MT1J"
-        };
-        firebase.initializeApp(firebaseConfig);
-        try { firebase.analytics(); } catch (_) {}
-        window.evfDb = firebase.firestore();
-    }
-} catch (e) {
-    console.error('Firebase init error', e);
+// ---------------------------------------------------------------------------
+// Firebase, loaded on demand
+//
+// The SDK is ~400KB across three scripts. It used to be three blocking <script>
+// tags in <head>, and only on index.html and contact.html -- so the other 17
+// pages carrying a contact form had no Firestore at all and every submission
+// from them failed with "Form service unavailable".
+//
+// Loading it here instead fixes both problems: no page pays for the SDK up
+// front, and every page with a form gets it the moment a visitor touches one.
+// ---------------------------------------------------------------------------
+const FIREBASE_VERSION = '10.12.2';
+const FIREBASE_CONFIG = {
+    apiKey: "AIzaSyDi2KWdwFkQCbuCgj9Qx2KRp7J9ji5iBrY",
+    authDomain: "evf-backend.firebaseapp.com",
+    projectId: "evf-backend",
+    storageBucket: "evf-backend.firebasestorage.app",
+    messagingSenderId: "668853277727",
+    appId: "1:668853277727:web:b8c47760ba1f11f4fab12a",
+    measurementId: "G-KRR863MT1J"
+};
+
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const existing = document.querySelector(`script[src="${src}"]`);
+        if (existing) {
+            if (existing.dataset.loaded) return resolve();
+            existing.addEventListener('load', () => resolve());
+            existing.addEventListener('error', reject);
+            return;
+        }
+        const el = document.createElement('script');
+        el.src = src;
+        el.async = true;
+        el.addEventListener('load', () => { el.dataset.loaded = '1'; resolve(); });
+        el.addEventListener('error', () => reject(new Error('Failed to load ' + src)));
+        document.head.appendChild(el);
+    });
+}
+
+let firebasePromise = null;
+
+// Resolves with a Firestore instance. Safe to call repeatedly -- the SDK is
+// fetched at most once per page.
+function getDb() {
+    if (firebasePromise) return firebasePromise;
+
+    const base = `https://www.gstatic.com/firebasejs/${FIREBASE_VERSION}`;
+    firebasePromise = loadScript(`${base}/firebase-app-compat.js`)
+        .then(() => loadScript(`${base}/firebase-firestore-compat.js`))
+        .then(() => {
+            if (!firebase.apps.length) firebase.initializeApp(FIREBASE_CONFIG);
+            window.evfDb = firebase.firestore();
+            return window.evfDb;
+        })
+        .catch((err) => {
+            // Let the next attempt retry rather than caching the failure.
+            firebasePromise = null;
+            throw err;
+        });
+
+    return firebasePromise;
 }
 
 // Mobile Menu Toggle
@@ -31,43 +75,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add hover effects for navigation links
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            this.style.color = '#0F218B';
-        });
-        link.addEventListener('mouseleave', function() {
-            this.style.color = '#696969';
-        });
-    });
-    
+    // Nav hover colour is handled in styles.css (.nav-link:hover). Doing it with
+    // two JS listeners per link meant ~50 listeners per page writing inline
+    // styles on every mouse move across the nav.
+
     // Initialize Swiper only on mobile screens
     if (window.innerWidth < 768) {
         initializeSwiper();
     }
-    
+
     // Initialize Team Swiper
     initializeTeamSwiper();
-    
+
     // Initialize Statistics Animation
     initializeStatisticsAnimation();
-    
-    // Re-initialize Swiper on window resize if needed
+
+    // Re-initialize Swiper on resize. Debounced, and only when the mobile
+    // breakpoint is actually crossed -- this used to tear down and rebuild both
+    // sliders on every resize event, which fires continuously while a mobile
+    // browser's address bar collapses during scroll.
+    let resizeTimer;
+    let wasMobile = window.innerWidth < 768;
     window.addEventListener('resize', function() {
-        if (window.innerWidth < 768 && !window.swiperInstance) {
-            initializeSwiper();
-        } else if (window.innerWidth >= 768 && window.swiperInstance) {
-            window.swiperInstance.destroy(true, true);
-            window.swiperInstance = null;
-        }
-        
-        // Re-initialize team swiper on resize
-        if (window.teamSwiperInstance) {
-            window.teamSwiperInstance.destroy(true, true);
-            window.teamSwiperInstance = null;
-        }
-        initializeTeamSwiper();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            const isMobile = window.innerWidth < 768;
+            if (isMobile === wasMobile) return;
+            wasMobile = isMobile;
+
+            if (isMobile && !window.swiperInstance) {
+                initializeSwiper();
+            } else if (!isMobile && window.swiperInstance) {
+                window.swiperInstance.destroy(true, true);
+                window.swiperInstance = null;
+            }
+
+            if (window.teamSwiperInstance) {
+                window.teamSwiperInstance.destroy(true, true);
+                window.teamSwiperInstance = null;
+            }
+            initializeTeamSwiper();
+        }, 200);
     });
 });
 
@@ -231,39 +279,49 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Add loading animation for images (only for Why Choose Us cards)
+// Fade in Why Choose Us card images as they decode.
+// The `complete` check matters: on a warm cache the load event has already
+// fired by the time this runs, and without it the image would be left at
+// opacity 0 permanently.
 document.querySelectorAll('.why-choose-card img').forEach(img => {
-    img.addEventListener('load', function() {
-        this.style.opacity = '1';
-    });
-    
-    // Set initial opacity for smooth loading
+    if (img.complete) return;
     img.style.opacity = '0';
     img.style.transition = 'opacity 0.3s ease';
+    const show = () => { img.style.opacity = '1'; };
+    img.addEventListener('load', show, { once: true });
+    img.addEventListener('error', show, { once: true });
 });
 
-// Add intersection observer for scroll animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe elements for scroll animations
+// ---------------------------------------------------------------------------
+// Scroll reveal
+//
+// This previously set opacity:0 on EVERY <section> from JS, then faded them in
+// via IntersectionObserver. Three problems: with JS blocked or slow the entire
+// page stayed invisible; the hero was hidden until an observer callback fired,
+// delaying the largest contentful paint; and writing inline styles to every
+// section forced a full style recalculation on load.
+//
+// Now: content is visible by default. JS opts elements in by adding .reveal,
+// and never touches anything in the first viewport. Honours reduced-motion.
+// ---------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('.why-choose-card, .hero-content, section');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+                obs.unobserve(entry.target);   // one-shot; stop observing after reveal
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.why-choose-card, section').forEach(el => {
+        // Anything already on screen at load stays untouched, so the hero and
+        // first section paint immediately at full opacity.
+        if (el.getBoundingClientRect().top < window.innerHeight) return;
+        el.classList.add('reveal');
         observer.observe(el);
     });
 });
@@ -340,9 +398,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contactForm');
     
     if (contactForm) {
+        // Warm the SDK as soon as the visitor engages with the form, so it is
+        // usually ready by the time they hit submit. Harmless if it fails --
+        // the submit handler awaits getDb() again anyway.
+        let warmed = false;
+        const warm = () => {
+            if (warmed) return;
+            warmed = true;
+            getDb().catch(() => {});
+        };
+        contactForm.addEventListener('focusin', warm, { once: true });
+        contactForm.addEventListener('pointerdown', warm, { once: true });
+
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(contactForm);
             const formObject = {};
@@ -377,20 +447,12 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
-            if (!window.evfDb) {
-                alert('Form service unavailable. Please try again later.');
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-                return;
-            }
-            
-            const payload = {
-                ...formObject,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                page: window.location.pathname
-            };
-            
-            window.evfDb.collection('submissions').add(payload)
+            getDb()
+                .then((db) => db.collection('submissions').add({
+                    ...formObject,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    page: window.location.pathname
+                }))
                 .then(() => {
                     alert('Thank you for your message! We will get back to you within 24 hours.');
                     contactForm.reset();

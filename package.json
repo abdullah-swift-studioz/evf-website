@@ -1,0 +1,25 @@
+{
+  "name": "evf-website",
+  "version": "1.0.0",
+  "description": "Express Visa Facilitation - static marketing site",
+  "scripts": {
+    "css": "tailwindcss -c tailwind.config.js -i src/tailwind.src.css -o dist/tailwind.css --minify",
+    "css:watch": "tailwindcss -c tailwind.config.js -i src/tailwind.src.css -o dist/tailwind.css --watch",
+    "images": "python3 tools/optimize-images.py",
+    "serve": "python3 -m http.server 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdullah-swift-studioz/evf-website.git"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/abdullah-swift-studioz/evf-website/issues"
+  },
+  "homepage": "https://github.com/abdullah-swift-studioz/evf-website#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  },
+  "private": true
+}
