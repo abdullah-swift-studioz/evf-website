@@ -4,4 +4,4 @@ Allow: /
 # Internal admin page: no public content to index.
 Disallow: /dashboard.html
 
-Sitemap: https://www.evisafacilitation.com/sitemap.xml
+Sitemap: https://evisafacilitation.com/sitemap.xml

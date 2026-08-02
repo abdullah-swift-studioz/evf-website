@@ -25,7 +25,9 @@ import os
 import re
 import sys
 
-SITE = "https://www.evisafacilitation.com"
+# The live site serves on the bare domain; www.evisafacilitation.com 301s to it.
+# Canonicals must name the final URL, not one that redirects.
+SITE = "https://evisafacilitation.com"
 
 # Pages whose <title> was copy-pasted from student-visa-services.html and never
 # updated. Keyed by filename -> corrected title.
