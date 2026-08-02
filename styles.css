@@ -290,131 +290,6 @@ footer .footer-separator {
     border: none;
 }
 
-/* Timeline Node Animation */
-.timeline-node {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.timeline-node:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px -5px rgba(15, 33, 139, 0.2);
-}
-
-/* Step Card Enhanced Styling */
-.step-card {
-    position: relative;
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.step-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    border-color: #0F218B;
-}
-
-.step-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #0F218B, #006A4E);
-    border-radius: 0.75rem 0.75rem 0 0;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.step-card:hover::before {
-    opacity: 1;
-}
-
-/* Timeline Line Enhancement */
-.timeline-line {
-    background: linear-gradient(90deg, transparent 0%, #0F218B 20%, #0F218B 80%, transparent 100%);
-    opacity: 0.3;
-}
-
-.timeline-line-mobile {
-    background: linear-gradient(180deg, transparent 0%, #0F218B 20%, #0F218B 80%, transparent 100%);
-    opacity: 0.3;
-}
-
-/* Step Number Badge */
-.step-number {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 24px;
-    height: 24px;
-    background: linear-gradient(135deg, #0F218B, #006A4E);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: bold;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-/* Enhanced Mobile Timeline */
-@media (max-width: 1023px) {
-    .timeline-mobile-container {
-        position: relative;
-        padding-left: 2rem;
-    }
-    
-    .timeline-mobile-line {
-        position: absolute;
-        left: 1rem;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: linear-gradient(180deg, transparent 0%, #0F218B 20%, #0F218B 80%, transparent 100%);
-        opacity: 0.3;
-    }
-}
-
-/* Step Card Content Animation */
-.step-card h3 {
-    transition: color 0.3s ease;
-}
-
-.step-card:hover h3 {
-    color: #006A4E !important;
-}
-
-.step-card p {
-    transition: color 0.3s ease;
-}
-
-.step-card:hover p {
-    color: #4a5568 !important;
-}
-
-/* Icon Animation */
-.step-icon {
-    transition: all 0.3s ease;
-}
-
-.step-card:hover .step-icon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 640px) {
-    .step-card {
-        margin-left: 1rem;
-    }
-    
-    .timeline-node {
-        left: -1rem;
-    }
-}
-
 /* Meet Our Team Section Styles */
 .team-swiper-container {
     position: relative;
@@ -810,4 +685,92 @@ nav a:hover {
         transform: none;
         transition: none;
     }
+}
+/* ---------------------------------------------------------------------------
+   How It Works -- the process ledger
+
+   Four columns hanging off one continuous hairline. At lg the grid's column
+   gap collapses to 0, so each item's border-t butts against the next and the
+   four rules read as a single line across the page.
+
+   Everything here is decoration layered on top of markup that is already
+   readable without it: with CSS or JS unavailable the section is a plain
+   ordered list of four headed blocks.
+   --------------------------------------------------------------------------- */
+
+.process-tick {
+    position: absolute;
+    top: -1px;            /* sit on the border, not below it */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #0F218B;
+    transform: scaleX(0.16);
+    transform-origin: left center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scale rather than width so the animation stays on the compositor and never
+   triggers layout. */
+.process-step:hover .process-tick {
+    transform: scaleX(1);
+}
+
+/* The leading zero is a 30% tint of the brand navy. It is aria-hidden and
+   carries no information -- the <ol> conveys the sequence -- so its low
+   contrast is decorative, not a readability failure. */
+.process-zero {
+    color: #B3B9D9;
+    transition: color 0.3s ease;
+}
+
+.process-step:hover .process-zero {
+    color: #0F218B;
+}
+
+/* Stagger the columns in as the section reveals. Scoped under .reveal, which
+   script.js only adds to sections below the fold -- so if JS is blocked or
+   reduced motion is set, these selectors never match and the steps are simply
+   visible from the start. */
+.reveal .process-step {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-visible .process-step {
+    opacity: 1;
+    transform: none;
+}
+
+.reveal-visible .process-step:nth-child(2) { transition-delay: 80ms; }
+.reveal-visible .process-step:nth-child(3) { transition-delay: 160ms; }
+.reveal-visible .process-step:nth-child(4) { transition-delay: 240ms; }
+
+@media (prefers-reduced-motion: reduce) {
+    .process-tick {
+        transform: scaleX(1);
+        transition: none;
+    }
+
+    .reveal .process-step,
+    .reveal-visible .process-step {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        transition-delay: 0ms;
+    }
+}
+
+/* The stage mark. Large enough to balance the 60px numeral opposite it, tinted
+   back so it reads as a quiet counterweight rather than competing with it. */
+.process-mark {
+    color: #006A4E;
+    opacity: 0.28;
+    transition: opacity 0.3s ease;
+    line-height: 1;
+}
+
+.process-step:hover .process-mark {
+    opacity: 0.6;
 }
