@@ -1,19 +1,289 @@
-/* Logo styling - reduce padding and make bigger */
+/* --- masthead ---------------------------------------------------------------
+
+   images/logo.webp is cropped to the wordmark itself. The original file
+   carried roughly 40% of its own height as baked-in white margin, so no
+   amount of CSS could pull the bar in around it; the padding here only ever
+   added to margin that was already in the pixels.
+
+   With the artwork tight, the bar's own padding is the only spacing left, and
+   the logo can sit smaller while reading larger than it did before. */
+
+/* The padding lives on .nav-bar, not on <nav>. The mobile panel is a sibling
+   of the bar, so anything padding <nav> would wrap the panel too and the bar
+   would lose the space under its own logo the moment the menu opened. */
+.site-nav {
+    padding: 0;
+}
+
+/* Wider than the max-w-7xl track the page content runs on, so the bar reads as
+   the page's frame rather than as another column of body copy. Below 96rem it
+   fills the viewport less its gutter. */
+.nav-bar {
+    max-width: 96rem;
+    padding: 0.875rem 1.25rem;
+}
+
 .logo-container {
-    padding: 0.25rem !important; /* Reduce padding from default */
+    padding: 0;
 }
 
-.logo-container img {
-    height: 6rem !important; /* Make logo bigger - 96px instead of 80px */
-    width: auto !important;
-    object-fit: contain !important;
+.nav-logo {
+    display: block;
+    height: 3.25rem;
+    width: auto;
+    object-fit: contain;
 }
 
-/* Override Tailwind classes for logo */
-nav .flex-shrink-0 img {
-    height: 6rem !important;
-    width: auto !important;
-    padding: 0.25rem !important;
+@media (min-width: 768px) {
+    .nav-bar {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    .nav-logo {
+        height: 3.75rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .nav-bar {
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
+}
+
+/* --- desktop destinations dropdown -------------------------------------------
+
+   Twenty countries in a 13rem column meant a scrolling list inside a hover
+   panel: the pointer had to stay inside the panel to scroll it, and half the
+   list was out of sight until it did. Three columns fit all twenty at once, so
+   there is nothing to scroll.
+
+   Anchored right, because the trigger sits near the end of the bar and a panel
+   this wide opening left-to-right would run off the viewport. */
+
+.nav-mega {
+    width: max-content;
+    max-width: min(44rem, calc(100vw - 4rem));
+    padding: 0.875rem;
+    border: 1px solid #e7ebf2;
+    border-radius: 0.875rem;
+    box-shadow: 0 24px 48px -24px rgba(15, 33, 139, 0.35),
+                0 2px 6px rgba(15, 33, 139, 0.05);
+}
+
+/* Bridges the gap between the trigger and the panel, so crossing it does not
+   drop the hover and close the menu under the pointer. */
+.nav-mega::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 0.75rem;
+}
+
+.nav-mega-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(8.5rem, 1fr));
+    gap: 0.125rem 0.75rem;
+}
+
+.nav-mega-grid a {
+    display: block;
+    padding: 0.4375rem 0.625rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: #545e6f;
+    white-space: nowrap;
+    transition: background-color 160ms ease, color 160ms ease;
+}
+
+.nav-mega-grid a:hover {
+    background-color: #f3f6fb;
+    color: #0F218B;
+}
+
+/* --- mobile menu ------------------------------------------------------------
+
+   Opened by animating the panel's single row track between 0fr and 1fr, so it
+   runs to whatever the content measures with no hard-coded height and nothing
+   to keep in sync when a link is added. The same mechanism nests one level
+   down for the three drawers. */
+
+.mobile-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    border-top: 1px solid transparent;
+    transition: grid-template-rows 380ms cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 380ms linear;
+}
+
+.mobile-menu.is-open {
+    grid-template-rows: 1fr;
+    border-top-color: #e5e7eb;
+}
+
+.mobile-menu-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+@media (min-width: 768px) {
+    .mobile-menu {
+        display: none;
+    }
+}
+
+/* Matches .nav-bar's gutter so the menu lines up under the logo. */
+.mobile-menu-inner > * {
+    margin-inline: 1.25rem;
+}
+
+.mobile-menu-inner > *:first-child {
+    margin-top: 0.5rem;
+}
+
+.mobile-menu-inner > *:last-child {
+    margin-bottom: 1.25rem;
+}
+
+.mobile-link,
+.mobile-group-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 0;
+    border: 0;
+    border-bottom: 1px solid #eef0f4;
+    background: none;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #3f4757;
+    text-align: left;
+    cursor: pointer;
+}
+
+.mobile-group-toggle {
+    width: 100%;
+}
+
+.mobile-link:active,
+.mobile-group-toggle:active {
+    color: #0F218B;
+}
+
+.mobile-group-toggle[aria-expanded="true"] {
+    color: #0F218B;
+}
+
+.mobile-group-icon {
+    flex-shrink: 0;
+    margin-left: 1rem;
+    font-size: 0.75rem;
+    color: #9aa3b2;
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+                color 200ms linear;
+}
+
+.mobile-group-toggle[aria-expanded="true"] .mobile-group-icon {
+    transform: rotate(180deg);
+    color: #006A4E;
+}
+
+.mobile-group-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 340ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-group-panel.is-open {
+    grid-template-rows: 1fr;
+}
+
+.mobile-group-links {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.mobile-group-links a {
+    display: block;
+    padding: 0.625rem 0 0.625rem 0.875rem;
+    font-size: 0.9375rem;
+    color: #6b7280;
+}
+
+.mobile-group-links > :first-child {
+    padding-top: 0.75rem;
+}
+
+.mobile-group-links > :last-child {
+    padding-bottom: 1rem;
+}
+
+/* Twenty destinations in one column would be a 900px scroll. */
+.mobile-group-links-split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 0.75rem;
+}
+
+.mobile-group-links-split > :nth-child(2) {
+    padding-top: 0.75rem;
+}
+
+.mobile-group-links-split > :nth-last-child(2) {
+    padding-bottom: 1rem;
+}
+
+.mobile-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding: 0.875rem 1.25rem;
+    border-radius: 9999px;
+    background-color: #0F218B;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.mobile-cta:active {
+    background-color: #006A4E;
+}
+
+/* The burger crosses out when the menu is open. */
+.mobile-menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-right: -0.5rem;
+    border: 0;
+    background: none;
+    color: #4b5563;
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.mobile-menu-button:focus-visible,
+.mobile-group-toggle:focus-visible,
+.mobile-link:focus-visible,
+.mobile-cta:focus-visible {
+    outline: 2px solid #0F218B;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mobile-menu,
+    .mobile-group-panel,
+    .mobile-group-icon {
+        transition: none;
+    }
 }
 
 
@@ -27,8 +297,8 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-/* Hero section video and overlay styles */
-.hero-video {
+/* Hero section slider and overlay styles */
+.hero-slide {
     position: absolute;
     top: 0;
     left: 0;
@@ -36,21 +306,89 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: 1;
+    opacity: 0;
+    transition: opacity 700ms ease-in-out;
 }
 
+.hero-slide.is-active {
+    opacity: 1;
+}
+
+/* A flat wash would flatten the first banner, which is already deep navy.
+   The gradient puts the weight behind the headline and lets the artwork
+   breathe at the top and bottom edges. */
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0.55) 45%,
+        rgba(0, 0, 0, 0.45) 100%
+    );
     z-index: 2;
 }
 
 .hero-content {
     position: relative;
     z-index: 3;
+}
+
+/* Both lines occupy the same grid cell, so the heading keeps the height of the
+   taller one and nothing below it shifts when the slide turns.
+
+   minmax(0, 1fr) rather than the default auto, so the column is always free to
+   shrink below the longest line's max-content width and the text wraps rather
+   than pushing the box wider. Pairs with the width below, which pins the
+   heading to its max-w-5xl track instead of letting it size to whichever line
+   happens to be showing. */
+.hero-headline {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+
+    /* Type follows the reference landing page: bold and set large, with the
+       lines stacked close so the headline reads as one solid block rather
+       than three loosely spaced sentences.
+
+       Declared here rather than with Tailwind utilities because every text-*
+       class ships its own line-height, so text-5xl and leading-tight fight
+       over the same property and the winner depends on the order they happen
+       to land in the built stylesheet. styles.css loads last, so this settles
+       it. */
+    font-size: clamp(1.75rem, 4.25vw, 3.375rem);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+}
+
+.hero-line {
+    grid-area: 1 / 1;
+    opacity: 0;
+    transition: opacity 700ms ease-in-out;
+    text-wrap: balance;
+}
+
+.hero-line.is-active {
+    opacity: 1;
+}
+
+/* Brighter than the brand green (#006A4E), which reads as near-black against
+   these two dark photographs. */
+.hero-accent {
+    color: #2ECC40;
+}
+
+/* The slider stops auto-advancing in script.js; this drops the fade so a swipe
+   swaps outright rather than dissolving. */
+@media (prefers-reduced-motion: reduce) {
+    .hero-slide,
+    .hero-line {
+        transition: none;
+    }
 }
 
 /* Why Choose Us section - Desktop Grid */
@@ -205,43 +543,150 @@ body {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* Footer Styles */
-footer {
-    background-color: #f9fafb; /* bg-gray-50 */
+/* ---------------------------------------------------------------------------
+   Footer
+
+   A neutral grey band rather than the blue-tinted one it replaces, so it reads
+   as the page's floor instead of as another brand surface.
+
+   The columns are deliberately uneven. Destinations is the longest list the
+   firm has and padding the others out to match it would only invent links; the
+   grid instead orders them long to short and closes with the social block, so
+   the descending edge looks composed. The headings sit on a shared baseline
+   because the grid rows align, which is what actually makes uneven columns
+   read as intentional.
+   --------------------------------------------------------------------------- */
+
+.site-footer {
+    background-color: #f1f2f4;
+    border-top: 1px solid #e2e4e8;
+    padding: 4.5rem 1.5rem 3rem;
 }
 
-/* Footer Contact Icons */
-.footer-icon {
-    transition: all 0.3s ease;
+.footer-inner {
+    max-width: 80rem;
+    margin: 0 auto;
 }
 
-.footer-icon:hover {
-    transform: scale(1.1);
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem 2rem;
 }
 
-/* Footer Links */
-.footer-link {
-    transition: all 0.2s ease;
+@media (min-width: 640px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
-.footer-link:hover {
-    color: #006A4E !important;
-    transform: translateX(2px);
+@media (min-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 3rem;
+    }
 }
 
-/* Footer Column Headers */
-.footer-column-header {
-    position: relative;
+.footer-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    color: #0F218B;
+    margin-bottom: 1.125rem;
 }
 
-.footer-column-header::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 30px;
-    height: 2px;
+/* The second heading in the last column, under the two links above it. */
+.footer-heading-follow {
+    margin-top: 2.25rem;
+}
+
+.footer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-list a {
+    display: inline-block;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: #545e6f;
+    transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-list a:hover,
+.footer-list a:focus-visible {
+    color: #006A4E;
+}
+
+/* --- follow us ------------------------------------------------------------ */
+
+.footer-social {
+    display: flex;
+    gap: 0.625rem;
+}
+
+/* Filled discs in the brand navy, the way the reference footer sets them:
+   the glyph is knocked out of the colour rather than drawn on a white chip. */
+.footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
     background-color: #0F218B;
+    color: #ffffff;
+    font-size: 1.0625rem;
+    transition: background-color 240ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Darken rather than switch hue. The brand green is close enough to the navy
+   in value that swapping between them read as a muddy shift with the white
+   glyph losing contrast; going deeper only ever raises it. */
+.footer-social-link:hover {
+    background-color: #0A1663;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px -8px rgba(10, 22, 99, 0.6);
+}
+
+.footer-social-link:focus-visible {
+    outline: 2px solid #0F218B;
+    outline-offset: 3px;
+}
+
+/* --- bottom bar ----------------------------------------------------------- */
+
+/* Centred on the block, with both lines sharing one measure so their left and
+   right edges land together instead of the short copyright sitting over a
+   disclaimer running twice as wide.
+
+   Both lines take the footer links' size and weight; the copyright used to be
+   set bolder and darker, which read as a different typeface sitting under the
+   columns rather than as the same one turned down. */
+.footer-bottom {
+    margin-top: 3.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid #e2e4e8;
+    text-align: center;
+}
+
+.footer-copyright,
+.footer-disclaimer {
+    max-width: 46rem;
+    margin-inline: auto;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #7b8494;
+    text-wrap: pretty;
+}
+
+.footer-disclaimer {
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+    color: #8d95a3;
 }
 
 /* Floating WhatsApp Button */
@@ -252,42 +697,6 @@ footer {
 .whatsapp-fab:hover {
     transform: scale(1.1);
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-/* Responsive Footer Adjustments */
-@media (max-width: 768px) {
-    .footer-contact-grid {
-        gap: 2rem;
-    }
-    
-    .footer-sitemap-grid {
-        gap: 2rem;
-    }
-    
-    .footer-column-header {
-        font-size: 1rem;
-    }
-}
-
-/* Footer Link Icons */
-.footer-link-icon {
-    transition: transform 0.2s ease;
-}
-
-.footer-link:hover .footer-link-icon {
-    transform: translateX(2px);
-}
-
-/* Enhanced Footer Styling */
-footer .footer-contact-info {
-    background: linear-gradient(135deg, rgba(0, 106, 78, 0.05) 0%, rgba(15, 33, 139, 0.05) 100%);
-    border-radius: 1rem;
-    padding: 2rem;
-    margin-bottom: 2rem;
-}
-
-footer .footer-separator {
-    border: none;
 }
 
 /* Meet Our Team Section Styles */
@@ -657,9 +1066,13 @@ footer .footer-separator {
     color:  rgb(88, 177, 255);
 }
 
-/* Nav hover colour. Previously two JS listeners per link writing inline styles;
-   CSS does it without touching the main thread. */
-nav a:hover {
+/* Masthead hover colour. Previously two JS listeners per link writing inline
+   styles; CSS does it without touching the main thread.
+
+   Scoped to .site-nav, not to every <nav>: the footer's link columns are a
+   <nav> too, and an unscoped rule repainted the white social glyphs navy on
+   hover, on a navy disc. */
+.site-nav a:hover {
     color: #0F218B;
 }
 
@@ -777,79 +1190,447 @@ nav a:hover {
 
 /* ---------------------------------------------------------------------------
    Client reviews
+
+   One review leads, set open on the page the way a pull quote runs in print,
+   with the Google figures beside it in the only solid block in the section.
+   The contrast between the two is the composition: airy type on the left,
+   a dense data panel on the right. The rest of the reviews are collapsed
+   underneath and opened from that panel.
    --------------------------------------------------------------------------- */
 
-.review-card {
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 1rem;
-    padding: 1.75rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+.review-section {
+    padding: 6rem 1.5rem;
+    background:
+        radial-gradient(48rem 26rem at 8% 0%, rgba(15, 33, 139, 0.055) 0%, transparent 60%),
+        radial-gradient(42rem 24rem at 96% 100%, rgba(0, 106, 78, 0.07) 0%, transparent 60%),
+        linear-gradient(180deg, #f7f9fc 0%, #ffffff 55%, #f5faf8 100%);
 }
 
-.review-card:hover {
-    border-color: #c7cbe0;
-    box-shadow: 0 10px 24px -12px rgba(15, 33, 139, 0.25);
-    transform: translateY(-2px);
+/* The quote gets the wider track. Below lg the panel drops under it. */
+.review-layout {
+    display: grid;
+    gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+    .review-layout {
+        grid-template-columns: minmax(0, 1.55fr) minmax(20rem, 1fr);
+        gap: 4.5rem;
+        align-items: start;
+    }
+}
+
+/* --- the lead review ------------------------------------------------------ */
+
+.review-featured {
+    margin: 0;
+    max-width: 44rem;
+}
+
+/* A real opening quote, sized as a mark rather than as punctuation. Sits on
+   its own line above the text so the first word of the quote still starts on
+   the left margin. */
+.review-mark {
+    display: block;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 5rem;
+    line-height: 0.55;
+    color: #006A4E;
+    opacity: 0.28;
 }
 
 .review-quote {
-    font-size: 1.25rem;
-    color: #006A4E;
-    opacity: 0.3;
-    margin-bottom: 1rem;
+    margin: 0;
+    font-size: clamp(1.25rem, 2.1vw, 1.75rem);
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: -0.011em;
+    color: #17203c;
+    text-wrap: pretty;
 }
 
-.review-text {
-    /* flex-1 keeps every attribution row on the same baseline regardless of
-       how long the quote runs, so the grid reads as one tidy row of cards. */
-    flex: 1;
-    margin: 0 0 1.5rem;
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #374151;
-}
-
-.review-by {
+.review-attrib {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid #f0f1f4;
+    gap: 0.875rem;
+    margin-top: 2.25rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid #e4e9f1;
 }
 
 .review-avatar {
     flex-shrink: 0;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 9999px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
     font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     color: #ffffff;
-    background: linear-gradient(135deg, #0F218B 0%, #006A4E 100%);
+    background: linear-gradient(140deg, #0F218B 0%, #006A4E 100%);
+}
+
+.review-who {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1875rem;
 }
 
 .review-name {
-    font-weight: 600;
+    font-size: 1.0625rem;
+    font-weight: 700;
     color: #0F218B;
     line-height: 1.3;
 }
 
 .review-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
     font-size: 0.8125rem;
-    color: #696969;
+    font-weight: 500;
+    color: #8a93a5;
+}
+
+/* --- rating panel --------------------------------------------------------- */
+
+.review-rating {
+    overflow: hidden;
+    border-radius: 1.25rem;
+    border: 1px solid #e6ebf3;
+    background-color: #ffffff;
+    box-shadow:
+        0 1px 2px rgba(15, 33, 139, 0.04),
+        0 28px 56px -40px rgba(15, 33, 139, 0.5);
+}
+
+.review-rating-head {
+    padding: 1.75rem 1.5rem 1.5rem;
+    text-align: center;
+    color: #ffffff;
+    background:
+        radial-gradient(18rem 11rem at 82% -25%, rgba(255, 255, 255, 0.2) 0%, transparent 70%),
+        linear-gradient(140deg, #0F218B 0%, #123199 48%, #006A4E 100%);
+}
+
+/* Says where the number comes from, in the panel that shows it. */
+.review-source-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4375rem;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 0.875rem;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.15);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.review-score {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.review-score span {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.58);
+    letter-spacing: 0;
+}
+
+.review-stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin: 0.75rem 0 0.5rem;
+    color: #FBBF24;
+    font-size: 0.9375rem;
+}
+
+.review-score-meta {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.review-rating-body {
+    padding: 1.5rem;
+}
+
+.review-topics-title {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #006A4E;
+    margin-bottom: 1.125rem;
+}
+
+.review-topics {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9375rem;
+    margin-bottom: 1.5rem;
+}
+
+.review-topic-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.875rem;
+    color: #374151;
+}
+
+/* The count Google reports for each topic. */
+.review-topic-count {
+    flex-shrink: 0;
+    min-width: 1.75rem;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    background-color: #f3f6fb;
+    border: 1px solid #e3e9f2;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #0F218B;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Bars are scaled against the most-mentioned topic, not against the review
+   count -- Google reports the tags, not what share of reviews they cover. */
+.review-bar {
+    height: 0.375rem;
+    margin-top: 0.5rem;
+    border-radius: 9999px;
+    background-color: #eef1f7;
+    overflow: hidden;
+}
+
+.review-bar-fill {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #0F218B 0%, #006A4E 100%);
+}
+
+.review-topic:nth-child(2) .review-bar-fill {
+    background: linear-gradient(90deg, #006A4E 0%, #22C55E 100%);
+}
+
+.review-topic:nth-child(3) .review-bar-fill {
+    background: linear-gradient(90deg, #D97706 0%, #FBBF24 100%);
+}
+
+.review-topic:nth-child(4) .review-bar-fill {
+    background: linear-gradient(90deg, #2563EB 0%, #38BDF8 100%);
+}
+
+/* The bars draw themselves the first time the chart is scrolled into view.
+   JS adds .is-charting; without it they are simply already at width. */
+.review-topics.is-charting .review-bar-fill {
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: review-bar-draw 900ms cubic-bezier(0.22, 0.8, 0.25, 1) forwards;
+}
+
+.review-topics.is-charting .review-topic:nth-child(2) .review-bar-fill { animation-delay: 120ms; }
+.review-topics.is-charting .review-topic:nth-child(3) .review-bar-fill { animation-delay: 240ms; }
+.review-topics.is-charting .review-topic:nth-child(4) .review-bar-fill { animation-delay: 360ms; }
+
+@keyframes review-bar-draw {
+    to { transform: scaleX(1); }
+}
+
+/* --- the two actions in the panel ----------------------------------------- */
+
+.review-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.875rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid #eef1f7;
+}
+
+.review-expand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: 100%;
+    padding: 0.8125rem 1rem;
+    border: 0;
+    border-radius: 9999px;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #0F218B;
+    cursor: pointer;
+    transition: background-color 260ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.review-expand:hover {
+    background-color: #006A4E;
+    box-shadow: 0 14px 24px -16px rgba(0, 106, 78, 0.95);
+}
+
+.review-expand:focus-visible {
+    outline: 2px solid #0F218B;
+    outline-offset: 3px;
+}
+
+.review-expand-icon {
+    font-size: 0.75rem;
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.review-expand[aria-expanded="true"] .review-expand-icon {
+    transform: rotate(180deg);
+}
+
+.review-google-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4375rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #6b7280;
+    transition: color 200ms ease;
+}
+
+.review-google-link:hover {
+    color: #006A4E;
+}
+
+.review-google-link i {
+    font-size: 0.6875rem;
+}
+
+/* --- the rest of the reviews ---------------------------------------------- */
+
+/* Collapsed by animating the row track rather than a height, so the panel
+   opens to whatever the content actually measures. */
+.review-all {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 480ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.review-all-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.review-all.is-open {
+    grid-template-rows: 1fr;
+}
+
+.review-all-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 3.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #e4e9f1;
+}
+
+.review-all-note {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Columns rather than a card grid: the quotes run to very different lengths
+   and a row of equal boxes would have to pad the short ones out to match. */
+.review-columns {
+    margin-top: 2rem;
+    columns: 1;
+    column-gap: 3rem;
+}
+
+@media (min-width: 768px) {
+    .review-columns {
+        columns: 2;
+    }
+}
+
+@media (min-width: 1280px) {
+    .review-columns {
+        columns: 3;
+    }
+}
+
+.review-item {
+    break-inside: avoid;
+    margin: 0 0 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e9edf4;
+}
+
+.review-item blockquote {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: #3f4a60;
+}
+
+.review-item figcaption {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.review-item-name {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #0F218B;
+}
+
+/* The route the reviewer named. Reviews that named none carry no tag. */
+.review-tag {
+    padding: 0.1875rem 0.5625rem;
+    border-radius: 9999px;
+    background-color: #e8f4ef;
+    color: #006A4E;
+    font-size: 0.6875rem;
+    font-weight: 600;
+}
+
+@media (max-width: 640px) {
+    .review-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .review-mark {
+        font-size: 3.75rem;
+    }
+
+    .review-quote {
+        line-height: 1.6;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .review-card,
-    .review-card:hover {
+    .review-all,
+    .review-expand,
+    .review-expand-icon {
         transition: none;
+    }
+
+    .review-topics.is-charting .review-bar-fill {
+        animation: none;
         transform: none;
     }
 }

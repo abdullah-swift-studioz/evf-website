@@ -65,52 +65,251 @@ function getDb() {
 }
 
 // ---------------------------------------------------------------------------
-// Hero background video
+// Hero banner slider
 //
-// Attaches the source only where the download is worth it. The poster is the
-// video's first frame, so anyone who does not get the video still sees the
-// intended hero -- they just see a still instead of motion.
+// Cross-fades the hero banners and their headlines together. The first slide
+// is already marked is-active in the markup, so the hero is correct before
+// this runs and stays correct if it never does -- the rotation is an
+// enhancement, not the thing that makes the hero appear.
 //
-// Skipped on narrow viewports (the video is a full-bleed desktop backdrop),
-// when the visitor has asked for reduced motion, and when the browser reports
-// Save-Data or a slow connection.
+// Rotation is automatic and has no on-screen controls. Under
+// prefers-reduced-motion it does not advance at all, and styles.css drops the
+// fade so a swipe swaps outright.
 // ---------------------------------------------------------------------------
-function initHeroVideo() {
-    const video = document.querySelector('video.hero-video[data-src]');
-    if (!video) return;
+const HERO_SLIDE_MS = 3500;
 
-    if (window.innerWidth < 768) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+function initHeroSlider() {
+    const hero = document.querySelector('.hero-slider');
+    if (!hero) return;
 
-    const conn = navigator.connection;
-    if (conn) {
-        if (conn.saveData) return;
-        if (/(^|-)2g$/.test(conn.effectiveType || '')) return;
-    }
+    const slides = Array.from(hero.querySelectorAll('.hero-slide'));
+    const lines = Array.from(hero.querySelectorAll('.hero-line'));
+    if (slides.length < 2) return;
 
-    const source = document.createElement('source');
-    source.src = video.dataset.src;
-    source.type = 'video/mp4';
-    video.appendChild(source);
-    video.load();
+    let current = 0;
+    let timer = null;
 
-    // autoplay can still be refused (e.g. iOS low power mode); the poster stays.
-    const attempt = video.play();
-    if (attempt && typeof attempt.catch === 'function') attempt.catch(() => {});
-}
+    function show(next) {
+        if (next === current) return;
+        current = next;
 
-// Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', function() {
-    initHeroVideo();
+        slides.forEach((el, i) => el.classList.toggle('is-active', i === current));
 
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (mobileMenuButton && mobileMenu) {
-        mobileMenuButton.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
+        lines.forEach((el, i) => {
+            const active = i === current;
+            el.classList.toggle('is-active', active);
+            // The hidden line is still in the layout, so it has to be taken out
+            // of the accessibility tree by hand or both headlines are announced.
+            if (active) el.removeAttribute('aria-hidden');
+            else el.setAttribute('aria-hidden', 'true');
         });
     }
+
+    function advance() {
+        show((current + 1) % slides.length);
+    }
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function stop() {
+        if (timer === null) return;
+        clearInterval(timer);
+        timer = null;
+    }
+
+    function start() {
+        stop();
+        if (reduced.matches) return;
+        timer = setInterval(advance, HERO_SLIDE_MS);
+    }
+
+    // Swipe. Only a mostly-horizontal drag counts, so a vertical scroll that
+    // happens to begin on the hero does not turn the slide.
+    let touchX = null;
+    let touchY = null;
+
+    hero.addEventListener('touchstart', (e) => {
+        touchX = e.changedTouches[0].clientX;
+        touchY = e.changedTouches[0].clientY;
+    }, { passive: true });
+
+    hero.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        const dy = e.changedTouches[0].clientY - touchY;
+        touchX = null;
+        touchY = null;
+
+        if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy)) return;
+        show(dx < 0
+            ? (current + 1) % slides.length
+            : (current - 1 + slides.length) % slides.length);
+        start();
+    }, { passive: true });
+
+    // No point rotating a hero nobody is looking at.
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop();
+        else start();
+    });
+
+    // Safari only got addEventListener on MediaQueryList in 14.
+    if (typeof reduced.addEventListener === 'function') {
+        reduced.addEventListener('change', start);
+    }
+
+    start();
+}
+
+// ---------------------------------------------------------------------------
+// Client reviews -- opening the rest of them
+//
+// One review leads the section and the remainder ship collapsed underneath it.
+// The panel is a grid whose single row track animates between 0fr and 1fr, so
+// it opens to whatever the content actually measures without a hard-coded
+// height. Nothing here is required to read the lead review.
+// ---------------------------------------------------------------------------
+function initReviewDisclosure() {
+    const button = document.querySelector('.review-expand');
+    const panel = document.getElementById('all-reviews');
+    if (!button || !panel) return;
+
+    const label = button.querySelector('.review-expand-label');
+
+    // Collapsed content is out of the accessibility tree and out of the tab
+    // order until it is opened. inert is ignored by older browsers, which is
+    // why the panel is also height-clipped rather than only visually hidden.
+    panel.inert = true;
+
+    button.addEventListener('click', () => {
+        const open = button.getAttribute('aria-expanded') === 'true';
+
+        button.setAttribute('aria-expanded', String(!open));
+        panel.classList.toggle('is-open', !open);
+        panel.inert = open;
+
+        if (label) label.textContent = open ? 'Read all reviews' : 'Hide reviews';
+
+        // Opening from a panel that sits above the content it reveals leaves
+        // the reader looking at the wrong part of the page.
+        if (!open) {
+            requestAnimationFrame(() => {
+                panel.scrollIntoView({
+                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                        ? 'auto'
+                        : 'smooth',
+                    block: 'nearest'
+                });
+            });
+        }
+    });
+}
+
+// The topic bars draw themselves the first time the chart is scrolled into
+// view. They are already at their final width in the markup, so if this never
+// runs the chart is still correct -- it just does not animate.
+function initReviewChart() {
+    const chart = document.querySelector('.review-topics');
+    if (!chart) return;
+    if (!('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-charting');
+            obs.unobserve(entry.target);
+        });
+    }, { threshold: 0.4 });
+
+    observer.observe(chart);
+}
+
+// ---------------------------------------------------------------------------
+// Mobile menu
+//
+// The panel and each of its three drawers open by animating a grid row track
+// from 0fr to 1fr, so nothing carries a hard-coded height. Collapsed content is
+// marked inert as well as clipped, so it is out of the tab order rather than
+// merely invisible.
+//
+// Only one drawer stands open at a time: with twenty destinations in one of
+// them, two open at once puts the rest of the menu out of reach.
+// ---------------------------------------------------------------------------
+function initMobileMenu() {
+    const button = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    if (!button || !menu) return;
+
+    const icon = button.querySelector('i');
+    const toggles = Array.from(menu.querySelectorAll('.mobile-group-toggle'));
+    const panels = toggles.map(t => document.getElementById(t.getAttribute('aria-controls')));
+
+    menu.inert = true;
+    panels.forEach(p => { if (p) p.inert = true; });
+
+    function closeDrawers(except) {
+        toggles.forEach((t, i) => {
+            if (t === except) return;
+            t.setAttribute('aria-expanded', 'false');
+            if (panels[i]) {
+                panels[i].classList.remove('is-open');
+                panels[i].inert = true;
+            }
+        });
+    }
+
+    function setMenu(open) {
+        button.setAttribute('aria-expanded', String(open));
+        button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menu.classList.toggle('is-open', open);
+        menu.inert = !open;
+
+        if (icon) {
+            icon.classList.toggle('fa-bars', !open);
+            icon.classList.toggle('fa-xmark', open);
+        }
+        if (!open) closeDrawers(null);
+    }
+
+    button.addEventListener('click', () => {
+        setMenu(button.getAttribute('aria-expanded') !== 'true');
+    });
+
+    toggles.forEach((toggle, i) => {
+        toggle.addEventListener('click', () => {
+            const open = toggle.getAttribute('aria-expanded') === 'true';
+            closeDrawers(toggle);
+            toggle.setAttribute('aria-expanded', String(!open));
+            if (panels[i]) {
+                panels[i].classList.toggle('is-open', !open);
+                panels[i].inert = open;
+            }
+        });
+    });
+
+    // Escape closes, and focus goes back to the control that opened it.
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+        if (button.getAttribute('aria-expanded') !== 'true') return;
+        setMenu(false);
+        button.focus();
+    });
+
+    // The menu is inline rather than an overlay, so leaving it open across the
+    // breakpoint would leave a stray open panel behind the desktop bar.
+    const desktop = window.matchMedia('(min-width: 768px)');
+    const onBreakpoint = (e) => { if (e.matches) setMenu(false); };
+    if (typeof desktop.addEventListener === 'function') {
+        desktop.addEventListener('change', onBreakpoint);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initHeroSlider();
+    initReviewDisclosure();
+    initReviewChart();
+    initMobileMenu();
     
     // Nav hover colour is handled in styles.css (.nav-link:hover). Doing it with
     // two JS listeners per link meant ~50 listeners per page writing inline
