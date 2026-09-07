@@ -11,3 +11,6 @@ New folder/
 # Node tooling for the Tailwind build (dist/tailwind.css IS committed)
 node_modules/
 tools/renames.txt
+
+# Python bytecode from tools/ (rewrite-heads.py imports critical-css.py)
+__pycache__/

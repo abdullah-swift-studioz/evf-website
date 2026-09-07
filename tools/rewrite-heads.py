@@ -21,9 +21,19 @@ What it changes, per page:
 
 dashboard.html is deliberately untouched.
 """
+import importlib.util
 import os
 import re
 import sys
+
+# The site's CSS is inlined into every page rather than linked, for the reasons
+# set out in inline-css.py. This script rewrites whole heads, so it has to emit
+# the same block -- otherwise a run here drops the styles back to two <link>s
+# and pages start rendering unstyled again whenever the origin misses them.
+_spec = importlib.util.spec_from_file_location(
+    "inline_css", os.path.join(os.path.dirname(__file__), "inline-css.py"))
+inline_css = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(inline_css)
 
 # The live site serves on the bare domain; www.evisafacilitation.com 301s to it.
 # Canonicals must name the final URL, not one that redirects.
@@ -163,10 +173,10 @@ def build_head(page, title, description, hero):
         '    <link rel="icon" type="image/jpeg" sizes="32x32" href="images/logo.jpeg">',
         '    <link rel="apple-touch-icon" sizes="180x180" href="images/logo.jpeg">',
         '',
-        '    <!-- Prebuilt Tailwind. Rebuild with: npm run css -->',
-        '    <link rel="stylesheet" href="dist/tailwind.css">',
+        inline_css.build_block().rstrip("\n"),
+        '',
+        '    <!-- Only cross-origin sheets are linked. Ours are inlined above. -->',
         '    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">',
-        '    <link rel="stylesheet" href="styles.css">',
     ]
     if swiper:
         lines.append('    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">')
