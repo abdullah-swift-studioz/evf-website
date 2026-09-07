@@ -62,6 +62,15 @@
     padding: 0.875rem 1.25rem;
 }
 
+/* The bar's own height, published for the hero to subtract. The masthead is
+   sticky but still in flow, so it takes this much out of the page before the
+   hero even starts -- and a hero of a full 100vh therefore ends exactly this
+   far below the fold. Its two values: the bar's vertical padding (2 x
+   0.875rem) plus the logo, per breakpoint. */
+:root {
+    --nav-h: 5rem;
+}
+
 .logo-container {
     padding: 0;
 }
@@ -74,6 +83,10 @@
 }
 
 @media (min-width: 768px) {
+    :root {
+        --nav-h: 5.5rem;
+    }
+
     .nav-bar {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
@@ -309,6 +322,50 @@
     cursor: pointer;
 }
 
+/* Drawn in CSS rather than set as a Font Awesome glyph. The icon sheet is
+   loaded non-blocking, so an <i class="fa-bars"> renders as nothing at all
+   until it arrives -- on a cold load that left the only control for opening
+   the menu invisible. Three bars from one element and its two pseudo-elements
+   need no font, no request and no JS to paint. */
+.burger,
+.burger::before,
+.burger::after {
+    display: block;
+    width: 1.375rem;
+    height: 2px;
+    border-radius: 1px;
+    background-color: currentColor;
+}
+
+.burger {
+    position: relative;
+    transition: background-color 200ms ease;
+}
+
+.burger::before,
+.burger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    transition: transform 200ms ease;
+}
+
+.burger::before { top: -0.4375rem; }
+.burger::after  { top:  0.4375rem; }
+
+/* Open: the middle bar drops out and the outer two cross. */
+.mobile-menu-button[aria-expanded="true"] .burger {
+    background-color: transparent;
+}
+
+.mobile-menu-button[aria-expanded="true"] .burger::before {
+    transform: translateY(0.4375rem) rotate(45deg);
+}
+
+.mobile-menu-button[aria-expanded="true"] .burger::after {
+    transform: translateY(-0.4375rem) rotate(-45deg);
+}
+
 .mobile-menu-button:focus-visible,
 .mobile-group-toggle:focus-visible,
 .mobile-link:focus-visible,
@@ -320,7 +377,10 @@
 @media (prefers-reduced-motion: reduce) {
     .mobile-menu,
     .mobile-group-panel,
-    .mobile-group-icon {
+    .mobile-group-icon,
+    .burger,
+    .burger::before,
+    .burger::after {
         transition: none;
     }
 }
@@ -337,6 +397,25 @@ body {
 }
 
 /* Hero section slider and overlay styles */
+
+/* h-screen made the hero a full 100vh, which is the whole viewport -- but the
+   masthead above it is in flow and had already spent --nav-h of that same
+   viewport. The hero therefore ran a bar-height past the fold, taking the
+   white consultation card sitting 2rem off its bottom edge with it: on first
+   paint the card was cut in half by the bottom of the screen. Subtracting the
+   bar puts the hero, and the card, inside the first screen.
+
+   svh rather than vh on the second declaration so a mobile browser's expanded
+   address bar cannot push the card back under its own chrome; the vh line
+   above it stays as the fallback for anything that does not know svh.
+
+   Wins over Tailwind's .h-screen on order alone -- same specificity, and this
+   sheet is inlined after the utilities. */
+.hero-slider {
+    height: calc(100vh - var(--nav-h));
+    height: calc(100svh - var(--nav-h));
+}
+
 .hero-slide {
     position: absolute;
     top: 0;
@@ -374,6 +453,23 @@ body {
 .hero-content {
     position: relative;
     z-index: 3;
+
+    /* The consultation card is absolutely positioned, so the flex centring on
+       this element cannot see it and the headline ends up centred in the whole
+       hero -- which reads as noticeably more air above the text than below it,
+       because the card is eating the bottom third and the centring is not
+       counting it. Reserving the card's own footprint here (its height plus
+       the 2rem it sits off the bottom edge) centres the headline in the space
+       it actually has, which lifts it by about half that. */
+    padding-bottom: 7.5rem;
+}
+
+/* Below sm the card stacks its text over its button, so it stands roughly a
+   row taller and reserves proportionally more. */
+@media (max-width: 639px) {
+    .hero-content {
+        padding-bottom: 9rem;
+    }
 }
 
 /* Both lines occupy the same grid cell, so the heading keeps the height of the
@@ -1701,6 +1797,11 @@ body {
                     <!-- Navigation Links -->
             <div class="hidden md:block">
                 <ul class="flex space-x-8 items-center">
+                    <li>
+                        <a href="index.html" class="transition-colors duration-200 font-medium hover:opacity-80" style="color: #696969;">
+                            Home
+                        </a>
+                    </li>
                     <!-- Our Company Dropdown -->
                     <li class="relative group">
                         <a href="#" class="transition-colors duration-200 font-medium flex items-center hover:opacity-80" style="color: #696969;">
@@ -1801,6 +1902,7 @@ body {
              JS off every link is still in the markup and reachable. -->
         <div class="mobile-menu" id="mobile-menu">
             <div class="mobile-menu-inner">
+                <a href="index.html" class="mobile-link">Home</a>
                 <div class="mobile-group">
                     <button type="button" class="mobile-group-toggle"
                             aria-expanded="false" aria-controls="m-about">
@@ -2272,6 +2374,6 @@ We work as one team to deliver exceptional client satisfaction.
     </a>
 
     <!-- External JavaScript -->
-    <script src="script.js?v=fa4d0d42" defer></script>
+    <script src="script.js?v=9af95fbf" defer></script>
 </body>
 </html>

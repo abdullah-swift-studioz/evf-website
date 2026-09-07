@@ -76,7 +76,7 @@ function getDb() {
 // prefers-reduced-motion it does not advance at all, and styles.css drops the
 // fade so a swipe swaps outright.
 // ---------------------------------------------------------------------------
-const HERO_SLIDE_MS = 3500;
+const HERO_SLIDE_MS = 7000;
 
 function initHeroSlider() {
     const hero = document.querySelector('.hero-slider');
@@ -241,7 +241,6 @@ function initMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     if (!button || !menu) return;
 
-    const icon = button.querySelector('i');
     const toggles = Array.from(menu.querySelectorAll('.mobile-group-toggle'));
     const panels = toggles.map(t => document.getElementById(t.getAttribute('aria-controls')));
 
@@ -265,10 +264,8 @@ function initMobileMenu() {
         menu.classList.toggle('is-open', open);
         menu.inert = !open;
 
-        if (icon) {
-            icon.classList.toggle('fa-bars', !open);
-            icon.classList.toggle('fa-xmark', open);
-        }
+        // The burger crosses out from .mobile-menu-button[aria-expanded="true"],
+        // set above -- no icon class to swap here.
         if (!open) closeDrawers(null);
     }
 
