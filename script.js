@@ -162,46 +162,60 @@ function initHeroSlider() {
 }
 
 // ---------------------------------------------------------------------------
-// Client reviews -- opening the rest of them
+// Client reviews -- moving a reviewer into the lead quote
 //
-// One review leads the section and the remainder ship collapsed underneath it.
-// The panel is a grid whose single row track animates between 0fr and 1fr, so
-// it opens to whatever the content actually measures without a hard-coded
-// height. Nothing here is required to read the lead review.
+// One review is set on the page; the rest ship as names under it with their
+// words in a visually hidden paragraph beside each name. Clicking a name moves
+// that review into the lead quote. Nothing here is needed to read the review
+// that is already on screen, and with this switched off every review is still
+// in the document for a screen reader and for search engines.
+//
+// The text is replaced while the block is faded out rather than across the
+// fade, so the two quotes never overlap mid-swap.
 // ---------------------------------------------------------------------------
-function initReviewDisclosure() {
-    const button = document.querySelector('.review-expand');
-    const panel = document.getElementById('all-reviews');
-    if (!button || !panel) return;
+function initReviewPeople() {
+    const row = document.querySelector('.review-people-row');
+    const featured = document.querySelector('.review-featured');
+    if (!row || !featured) return;
 
-    const label = button.querySelector('.review-expand-label');
+    const quote = featured.querySelector('.review-quote');
+    const name = featured.querySelector('.review-name');
+    const avatar = featured.querySelector('.review-avatar');
+    if (!quote || !name || !avatar) return;
 
-    // Collapsed content is out of the accessibility tree and out of the tab
-    // order until it is opened. inert is ignored by older browsers, which is
-    // why the panel is also height-clipped rather than only visually hidden.
-    panel.inert = true;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const buttons = Array.from(row.querySelectorAll('.review-person'));
 
-    button.addEventListener('click', () => {
-        const open = button.getAttribute('aria-expanded') === 'true';
+    function show(button) {
+        const holder = button.parentElement
+            ? button.parentElement.querySelector('.review-person-text')
+            : null;
+        if (!holder) return;
 
-        button.setAttribute('aria-expanded', String(!open));
-        panel.classList.toggle('is-open', !open);
-        panel.inert = open;
+        buttons.forEach(other => {
+            const active = other === button;
+            other.classList.toggle('is-active', active);
+            other.setAttribute('aria-pressed', String(active));
+        });
 
-        if (label) label.textContent = open ? 'Read all reviews' : 'Hide reviews';
+        const apply = () => {
+            quote.textContent = holder.textContent.trim();
+            name.textContent = button.dataset.name || '';
+            avatar.textContent = button.dataset.initials || '';
+            featured.classList.remove('is-swapping');
+        };
 
-        // Opening from a panel that sits above the content it reveals leaves
-        // the reader looking at the wrong part of the page.
-        if (!open) {
-            requestAnimationFrame(() => {
-                panel.scrollIntoView({
-                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
-                        ? 'auto'
-                        : 'smooth',
-                    block: 'nearest'
-                });
-            });
+        if (reduced.matches) {
+            apply();
+            return;
         }
+
+        featured.classList.add('is-swapping');
+        window.setTimeout(apply, 220);
+    }
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => show(button));
     });
 }
 
@@ -304,7 +318,7 @@ function initMobileMenu() {
 
 document.addEventListener('DOMContentLoaded', function() {
     initHeroSlider();
-    initReviewDisclosure();
+    initReviewPeople();
     initReviewChart();
     initMobileMenu();
     
@@ -319,9 +333,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize Team Swiper
     initializeTeamSwiper();
-
-    // Initialize Statistics Animation
-    initializeStatisticsAnimation();
 
     // Re-initialize Swiper on resize. Debounced, and only when the mobile
     // breakpoint is actually crossed -- this used to tear down and rebuild both
@@ -573,57 +584,6 @@ function toggleAccordion(button) {
     if (!isActive) {
         accordionItem.classList.add('active');
     }
-}
-
-// Animated Statistics Counter
-function animateCounter(element, target, duration, suffix = '') {
-    let start = 0;
-    const increment = target / (duration / 16); // 60fps
-    
-    function updateCounter() {
-        start += increment;
-        if (start < target) {
-            element.textContent = Math.floor(start) + suffix;
-            requestAnimationFrame(updateCounter);
-        } else {
-            element.textContent = target + suffix;
-        }
-    }
-    
-    updateCounter();
-}
-
-// Statistics Animation with Intersection Observer
-function initializeStatisticsAnimation() {
-    const statsSection = document.querySelector('section[style*="background-color: #0F218B"]');
-    if (!statsSection) return;
-    
-    const stat1 = document.getElementById('stat-1');
-    const stat2 = document.getElementById('stat-2');
-    const stat3 = document.getElementById('stat-3');
-    
-    if (!stat1 || !stat2 || !stat3) return;
-    
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -100px 0px'
-    };
-    
-    const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Animate the counters
-                animateCounter(stat1, 98, 2000, '%');
-                animateCounter(stat2, 5000, 2500, '+');
-                animateCounter(stat3, 14, 1500, '+');
-                
-                // Stop observing after animation starts
-                statsObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    
-    statsObserver.observe(statsSection);
 }
 
 // Contact Form Handling

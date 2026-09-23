@@ -422,14 +422,14 @@ body {
        counting it. Reserving the card's own footprint here (its height plus
        the 2rem it sits off the bottom edge) centres the headline in the space
        it actually has, which lifts it by about half that. */
-    padding-bottom: 7.5rem;
+    padding-bottom: 5.5rem;
 }
 
 /* Below sm the card stacks its text over its button, so it stands roughly a
    row taller and reserves proportionally more. */
 @media (max-width: 639px) {
     .hero-content {
-        padding-bottom: 9rem;
+        padding-bottom: 7rem;
     }
 }
 
@@ -476,6 +476,50 @@ body {
    these two dark photographs. */
 .hero-accent {
     color: #2ECC40;
+}
+
+/* --- the consultation card ------------------------------------------------
+   Sits over the bottom of the hero. Set 40% smaller than it was: it is a
+   single line of text and a button, and at the old size it read as a second
+   headline competing with the real one above it. Sized here rather than with
+   utilities so the whole card scales from one place.
+   -------------------------------------------------------------------------- */
+
+.hero-cta {
+    max-width: 33.5rem;
+}
+
+.hero-cta-card {
+    padding: 0.875rem 0.875rem 0.875rem 1.375rem;
+    gap: 0.875rem;
+}
+
+.hero-cta-text {
+    font-size: 0.9375rem;
+    line-height: 1.35;
+}
+
+.hero-cta-button {
+    padding: 0.5625rem 1.25rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    gap: 0.4375rem;
+}
+
+.hero-cta-button i {
+    font-size: 0.6875rem;
+}
+
+@media (min-width: 640px) {
+    .hero-cta-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 639px) {
+    .hero-cta-card {
+        padding: 0.875rem 1rem;
+    }
 }
 
 /* The slider stops auto-advancing in script.js; this drops the fade so a swipe
@@ -653,10 +697,16 @@ body {
    read as intentional.
    --------------------------------------------------------------------------- */
 
+/* The client reviews on a Windows laptop at 125% scaling: a 1280x640 CSS-px
+   viewport under an 89px sticky nav. Scrolled to the end, everything from the
+   column headings down has to fit in the ~550px below the nav or the headings
+   sit behind it. The tallest column (10 destination links) plus the bottom bar
+   is kept to ~505px, so keep the spacing below the headings tight: bottom
+   padding, list gap and the bottom bar's margins are all at their floor. */
 .site-footer {
     background-color: #f1f2f4;
     border-top: 1px solid #e2e4e8;
-    padding: 4.5rem 1.5rem 3rem;
+    padding: 4.5rem 1.5rem 0.75rem;
 }
 
 .footer-inner {
@@ -699,7 +749,7 @@ body {
 .footer-list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.625rem;
 }
 
 .footer-list a {
@@ -747,6 +797,12 @@ body {
     box-shadow: 0 8px 16px -8px rgba(10, 22, 99, 0.6);
 }
 
+.footer-social-link svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
 .footer-social-link:focus-visible {
     outline: 2px solid #0F218B;
     outline-offset: 3px;
@@ -762,8 +818,8 @@ body {
    set bolder and darker, which read as a different typeface sitting under the
    columns rather than as the same one turned down. */
 .footer-bottom {
-    margin-top: 3.5rem;
-    padding-top: 1.75rem;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
     border-top: 1px solid #e2e4e8;
     text-align: center;
 }
@@ -1289,38 +1345,54 @@ body {
 
    One review leads, set open on the page the way a pull quote runs in print,
    with the Google figures beside it in the only solid block in the section.
-   The contrast between the two is the composition: airy type on the left,
-   a dense data panel on the right. The rest of the reviews are collapsed
-   underneath and opened from that panel.
+   The quote is set at the same size as the page's body copy -- it reads as
+   part of the page rather than as a banner.
+
+   The heading sits inside the left column rather than above the grid, so the
+   rating panel starts at the top of the section and is centred against the
+   whole column instead of hanging below the heading.
+
+   The section is built to stand in one screen on a laptop. Every other
+   reviewer is a name under the lead quote, in a row that wraps rather than
+   scrolls, so the left column runs about as tall as the rating panel beside
+   it and nothing sits below the fold. Their text is not on the page; picking
+   a name swaps it into the lead quote.
    --------------------------------------------------------------------------- */
 
 .review-section {
-    padding: 6rem 1.5rem;
+    padding: 3.5rem 1.5rem;
     background:
         radial-gradient(48rem 26rem at 8% 0%, rgba(15, 33, 139, 0.055) 0%, transparent 60%),
         radial-gradient(42rem 24rem at 96% 100%, rgba(0, 106, 78, 0.07) 0%, transparent 60%),
         linear-gradient(180deg, #f7f9fc 0%, #ffffff 55%, #f5faf8 100%);
 }
 
-/* The quote gets the wider track. Below lg the panel drops under it. */
+/* The panel takes its own width and the quote and names get the rest. Below
+   lg the panel drops under them. align-items: center rather than start, so
+   the panel sits in the middle of the column beside it whichever of the two
+   runs taller. */
 .review-layout {
     display: grid;
-    gap: 3rem;
+    gap: 2.25rem;
 }
 
 @media (min-width: 1024px) {
     .review-layout {
-        grid-template-columns: minmax(0, 1.55fr) minmax(20rem, 1fr);
-        gap: 4.5rem;
-        align-items: start;
+        grid-template-columns: minmax(0, 1fr) 19rem;
+        gap: 3.5rem;
+        align-items: center;
     }
 }
 
-/* --- the lead review ------------------------------------------------------ */
+/* --- heading + lead review ------------------------------------------------ */
+
+.review-head {
+    margin-bottom: 1.5rem;
+}
 
 .review-featured {
     margin: 0;
-    max-width: 44rem;
+    max-width: 42rem;
 }
 
 /* A real opening quote, sized as a mark rather than as punctuation. Sits on
@@ -1329,29 +1401,39 @@ body {
 .review-mark {
     display: block;
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 5rem;
-    line-height: 0.55;
+    font-size: 3.5rem;
+    line-height: 0.6;
     color: #006A4E;
     opacity: 0.28;
 }
 
+/* Set at the body size used through the rest of the page (text-lg /
+   leading-relaxed), not at display size. */
 .review-quote {
     margin: 0;
-    font-size: clamp(1.25rem, 2.1vw, 1.75rem);
+    font-size: 1.125rem;
     font-weight: 500;
-    line-height: 1.55;
-    letter-spacing: -0.011em;
+    line-height: 1.75;
     color: #17203c;
     text-wrap: pretty;
+    transition: opacity 220ms ease;
+}
+
+/* Swapping in another reviewer's words: the text is replaced while the block
+   is at zero opacity, so the two never cross-fade over each other. */
+.review-featured.is-swapping .review-quote,
+.review-featured.is-swapping .review-attrib {
+    opacity: 0;
 }
 
 .review-attrib {
     display: flex;
     align-items: center;
     gap: 0.875rem;
-    margin-top: 2.25rem;
-    padding-top: 1.75rem;
+    margin-top: 1.25rem;
+    padding-top: 1.125rem;
     border-top: 1px solid #e4e9f1;
+    transition: opacity 220ms ease;
 }
 
 .review-avatar {
@@ -1359,10 +1441,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
+    width: 2.75rem;
+    height: 2.75rem;
     border-radius: 9999px;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.02em;
     color: #ffffff;
@@ -1376,7 +1458,7 @@ body {
 }
 
 .review-name {
-    font-size: 1.0625rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #0F218B;
     line-height: 1.3;
@@ -1395,7 +1477,10 @@ body {
 
 .review-rating {
     overflow: hidden;
-    border-radius: 1.25rem;
+    width: 100%;
+    max-width: 19rem;
+    justify-self: center;
+    border-radius: 1rem;
     border: 1px solid #e6ebf3;
     background-color: #ffffff;
     box-shadow:
@@ -1404,7 +1489,7 @@ body {
 }
 
 .review-rating-head {
-    padding: 1.75rem 1.5rem 1.5rem;
+    padding: 1.25rem 1.125rem 1.125rem;
     text-align: center;
     color: #ffffff;
     background:
@@ -1417,25 +1502,25 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 0.4375rem;
-    padding: 0.25rem 0.75rem;
-    margin-bottom: 0.875rem;
+    padding: 0.1875rem 0.625rem;
+    margin-bottom: 0.625rem;
     border-radius: 9999px;
     background-color: rgba(255, 255, 255, 0.15);
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
 }
 
 .review-score {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.03em;
 }
 
 .review-score span {
-    font-size: 1.0625rem;
+    font-size: 0.875rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.58);
     letter-spacing: 0;
@@ -1445,18 +1530,18 @@ body {
     display: flex;
     justify-content: center;
     gap: 0.25rem;
-    margin: 0.75rem 0 0.5rem;
+    margin: 0.5rem 0 0.375rem;
     color: #FBBF24;
-    font-size: 0.9375rem;
+    font-size: 0.8125rem;
 }
 
 .review-score-meta {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     color: rgba(255, 255, 255, 0.8);
 }
 
 .review-rating-body {
-    padding: 1.5rem;
+    padding: 1.125rem;
 }
 
 .review-topics-title {
@@ -1465,30 +1550,30 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: #006A4E;
-    margin-bottom: 1.125rem;
+    margin-bottom: 0.875rem;
 }
 
 .review-topics {
     display: flex;
     flex-direction: column;
-    gap: 0.9375rem;
-    margin-bottom: 1.5rem;
+    gap: 0.6875rem;
+    margin-bottom: 1.125rem;
 }
 
 .review-topic-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    font-size: 0.875rem;
+    gap: 0.75rem;
+    font-size: 0.8125rem;
     color: #374151;
 }
 
 /* The count Google reports for each topic. */
 .review-topic-count {
     flex-shrink: 0;
-    min-width: 1.75rem;
-    padding: 0.125rem 0.5rem;
+    min-width: 1.5rem;
+    padding: 0.0625rem 0.4375rem;
     border-radius: 9999px;
     background-color: #f3f6fb;
     border: 1px solid #e3e9f2;
@@ -1502,8 +1587,8 @@ body {
 /* Bars are scaled against the most-mentioned topic, not against the review
    count -- Google reports the tags, not what share of reviews they cover. */
 .review-bar {
-    height: 0.375rem;
-    margin-top: 0.5rem;
+    height: 0.3125rem;
+    margin-top: 0.4375rem;
     border-radius: 9999px;
     background-color: #eef1f7;
     overflow: hidden;
@@ -1514,26 +1599,25 @@ body {
     height: 100%;
     border-radius: inherit;
     background: linear-gradient(90deg, #0F218B 0%, #006A4E 100%);
+    transform-origin: left center;
 }
 
 .review-topic:nth-child(2) .review-bar-fill {
-    background: linear-gradient(90deg, #006A4E 0%, #22C55E 100%);
+    background: linear-gradient(90deg, #12308f 0%, #0b8a5f 100%);
 }
 
 .review-topic:nth-child(3) .review-bar-fill {
-    background: linear-gradient(90deg, #D97706 0%, #FBBF24 100%);
+    background: linear-gradient(90deg, #b45309 0%, #d97706 100%);
 }
 
 .review-topic:nth-child(4) .review-bar-fill {
-    background: linear-gradient(90deg, #2563EB 0%, #38BDF8 100%);
+    background: linear-gradient(90deg, #1d4ed8 0%, #38bdf8 100%);
 }
 
-/* The bars draw themselves the first time the chart is scrolled into view.
-   JS adds .is-charting; without it they are simply already at width. */
+/* Drawn on first scroll into view. The widths are already correct in the
+   markup, so the chart is right whether or not this ever runs. */
 .review-topics.is-charting .review-bar-fill {
-    transform: scaleX(0);
-    transform-origin: left center;
-    animation: review-bar-draw 900ms cubic-bezier(0.22, 0.8, 0.25, 1) forwards;
+    animation: review-bar-draw 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .review-topics.is-charting .review-topic:nth-child(2) .review-bar-fill { animation-delay: 120ms; }
@@ -1541,187 +1625,186 @@ body {
 .review-topics.is-charting .review-topic:nth-child(4) .review-bar-fill { animation-delay: 360ms; }
 
 @keyframes review-bar-draw {
-    to { transform: scaleX(1); }
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
 }
 
-/* --- the two actions in the panel ----------------------------------------- */
+/* --- the link out of the panel -------------------------------------------- */
 
 .review-actions {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.875rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid #eef1f7;
-}
-
-.review-expand {
-    display: inline-flex;
-    align-items: center;
     justify-content: center;
-    gap: 0.625rem;
-    width: 100%;
-    padding: 0.8125rem 1rem;
-    border: 0;
-    border-radius: 9999px;
-    font-family: inherit;
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: #ffffff;
-    background-color: #0F218B;
-    cursor: pointer;
-    transition: background-color 260ms cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.review-expand:hover {
-    background-color: #006A4E;
-    box-shadow: 0 14px 24px -16px rgba(0, 106, 78, 0.95);
-}
-
-.review-expand:focus-visible {
-    outline: 2px solid #0F218B;
-    outline-offset: 3px;
-}
-
-.review-expand-icon {
-    font-size: 0.75rem;
-    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.review-expand[aria-expanded="true"] .review-expand-icon {
-    transform: rotate(180deg);
+    padding-top: 1rem;
+    border-top: 1px solid #eef1f7;
 }
 
 .review-google-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.4375rem;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    border: 1px solid #dfe5ef;
+    border-radius: 9999px;
     font-size: 0.8125rem;
-    font-weight: 600;
-    color: #6b7280;
-    transition: color 200ms ease;
+    font-weight: 700;
+    color: #0F218B;
+    transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease;
 }
 
 .review-google-link:hover {
     color: #006A4E;
+    border-color: #cfe4db;
+    background-color: #f4faf7;
 }
 
 .review-google-link i {
     font-size: 0.6875rem;
 }
 
-/* --- the rest of the reviews ---------------------------------------------- */
+/* --- the other reviewers ------------------------------------------------- */
 
-/* Collapsed by animating the row track rather than a height, so the panel
-   opens to whatever the content actually measures. */
-.review-all {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 480ms cubic-bezier(0.16, 1, 0.3, 1);
+/* Names only, under the lead quote. Each reviewer's words ship in the markup
+   beside their name but are not set on the page; picking a name moves them
+   into the quote above. */
+.review-people {
+    margin-top: 1.5rem;
+    padding-top: 1.375rem;
+    border-top: 1px solid #e4e9f1;
 }
 
-.review-all-inner {
-    overflow: hidden;
-    min-height: 0;
-}
-
-.review-all.is-open {
-    grid-template-rows: 1fr;
-}
-
-.review-all-head {
+.review-people-head {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 3.5rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid #e4e9f1;
+    gap: 0.5rem 0.75rem;
+    margin-bottom: 0.75rem;
 }
 
-.review-all-note {
-    font-size: 0.875rem;
+.review-people-title {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #006A4E;
+}
+
+.review-people-note {
+    font-size: 0.8125rem;
     color: #6b7280;
 }
 
-/* Columns rather than a card grid: the quotes run to very different lengths
-   and a row of equal boxes would have to pad the short ones out to match. */
-.review-columns {
-    margin-top: 2rem;
-    columns: 1;
-    column-gap: 3rem;
-}
-
-@media (min-width: 768px) {
-    .review-columns {
-        columns: 2;
-    }
-}
-
-@media (min-width: 1280px) {
-    .review-columns {
-        columns: 3;
-    }
-}
-
-.review-item {
-    break-inside: avoid;
-    margin: 0 0 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #e9edf4;
-}
-
-.review-item blockquote {
-    margin: 0;
-    font-size: 0.9375rem;
-    line-height: 1.75;
-    color: #3f4a60;
-}
-
-.review-item figcaption {
+/* Wraps into as many rows as the column needs. It used to scroll sideways
+   instead, which put the last names out of sight. */
+.review-people-row {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
-.review-item-name {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: #0F218B;
-}
-
-/* The route the reviewer named. Reviews that named none carry no tag. */
-.review-tag {
-    padding: 0.1875rem 0.5625rem;
+.review-person {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+    padding: 0.3125rem 0.875rem 0.3125rem 0.3125rem;
+    border: 1px solid #e1e7f0;
     border-radius: 9999px;
-    background-color: #e8f4ef;
-    color: #006A4E;
+    background-color: #ffffff;
+    font-family: inherit;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: border-color 220ms ease, background-color 220ms ease,
+                box-shadow 220ms ease, transform 220ms ease;
+}
+
+.review-person:hover {
+    border-color: #c3d0e6;
+    box-shadow: 0 12px 22px -18px rgba(15, 33, 139, 0.9);
+    transform: translateY(-1px);
+}
+
+.review-person:focus-visible {
+    outline: 2px solid #0F218B;
+    outline-offset: 3px;
+}
+
+.review-person.is-active {
+    border-color: #0F218B;
+    background-color: #0F218B;
+    box-shadow: 0 16px 28px -20px rgba(15, 33, 139, 0.95);
+}
+
+.review-person-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 9999px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(140deg, #0F218B 0%, #006A4E 100%);
+}
+
+.review-person.is-active .review-person-avatar {
+    color: #0F218B;
+    background: #ffffff;
+}
+
+.review-person-who {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.0625rem;
+}
+
+.review-person-name {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #17203c;
+    line-height: 1.25;
+}
+
+.review-person.is-active .review-person-name {
+    color: #ffffff;
+}
+
+.review-person-tag {
     font-size: 0.6875rem;
     font-weight: 600;
+    color: #8a93a5;
+}
+
+.review-person.is-active .review-person-tag {
+    color: rgba(255, 255, 255, 0.72);
 }
 
 @media (max-width: 640px) {
     .review-section {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1.5rem;
     }
 
     .review-mark {
-        font-size: 3.75rem;
+        font-size: 3rem;
     }
 
     .review-quote {
-        line-height: 1.6;
+        font-size: 1.0625rem;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .review-all,
-    .review-expand,
-    .review-expand-icon {
+    .review-quote,
+    .review-attrib,
+    .review-person {
         transition: none;
     }
 
